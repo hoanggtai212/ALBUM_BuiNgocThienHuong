@@ -107,21 +107,23 @@ let typed = false;
 
 pages.forEach((page) => {
   let startX = 0;
-  
 
+  // 👉 LẬT XUÔI
   const flipForward = () => {
     if (!page.classList.contains('flipped')) {
       page.classList.add('flipped');
 
+      // Trang gần cuối → chạy typewriter
       if (page === pages[pages.length - 2] && !typed) {
         const endText = document.getElementById('ending-text');
         const content = `I love three things in this world: The sun ☀️, the moon 🌕 and you ❤️.\nThe sun for the morning, the moon for the night and you, forever ❤️❤️❤️`;
         setTimeout(() => typewriterEffect(content, endText), 800);
         typed = true;
       }
-}
+    }
   };
 
+  // 👉 LẬT NGƯỢC
   const flipBackward = () => {
     if (page.classList.contains('flipped')) {
       page.classList.remove('flipped');
@@ -130,24 +132,30 @@ pages.forEach((page) => {
     }
   };
 
-  page.addEventListener('click', () => {
-  page.classList.toggle('flipped');
-});
+  // 👉 CLICK: phải = xuôi | trái = ngược
+  page.addEventListener('click', (e) => {
+    const rect = page.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
 
+    if (clickX > rect.width / 2) {
+      flipForward();
+    } else {
+      flipBackward();
+    }
+  });
+
+  // 👉 VUỐT
   page.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
   });
 
   page.addEventListener('touchend', (e) => {
     const diff = e.changedTouches[0].clientX - startX;
-    if (diff < -30) flipForward();
-    else if (diff > 30) flipBackward();
+
+    if (diff < -30) {
+      flipForward();   // vuốt trái
+    } else if (diff > 30) {
+      flipBackward();  // vuốt phải
+    }
   });
-
 });
-
-
-
-
-
-
