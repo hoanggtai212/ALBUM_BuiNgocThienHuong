@@ -35,6 +35,7 @@ body {
 
   transform-origin: right;      /* QUAN TRỌNG */
   transition: transform 0.8s ease;
+  transform-style: preserve-3d;
 
   cursor: pointer;
   border: 3px solid #888;
@@ -101,6 +102,10 @@ body {
   font-style: italic;
 }
   
+.front,
+.back {
+  backface-visibility: hidden;
+}
 
 
 
