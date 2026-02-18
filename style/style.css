@@ -32,8 +32,10 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  transform-origin: left;
+
+  transform-origin: right;      /* QUAN TRỌNG */
   transition: transform 0.8s ease;
+
   cursor: pointer;
   border: 3px solid #888;
   border-radius: 10px;
@@ -45,12 +47,8 @@ body {
   padding: 20px;
 }
 
-.page {
-  transform-origin: right;   /* lật từ cạnh phải */
-}
-
 .page.flipped {
-  transform: rotateY(-150deg); /* không cần -180 */
+  transform: rotateY(-150deg);
 }
 
 .intro-content, .end-content {
@@ -103,6 +101,7 @@ body {
   font-style: italic;
 }
   
+
 
 
 
