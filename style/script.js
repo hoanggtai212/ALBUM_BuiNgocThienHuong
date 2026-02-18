@@ -121,10 +121,6 @@ pages.forEach((page) => {
         typed = true;
       }
 
-      setTimeout(() => {
-  page.style.zIndex = 0;
-}, 1000);
-    }
   };
 
   const flipBackward = () => {
@@ -149,6 +145,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
