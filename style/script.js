@@ -47,8 +47,14 @@ for (let i = 0; i < images.length; i += 2) {
   front.className = 'front';
   const frontImg = document.createElement('img');
   frontImg.src = images[i];
+  
+const caption = document.createElement('div');
+caption.className = 'caption';
+caption.innerText = '🎂 30-12-2012';
+  
   front.appendChild(frontImg);
-
+front.appendChild(caption);
+  
   const back = document.createElement('div');
   back.className = 'back';
   if (images[i + 1]) {
@@ -145,3 +151,4 @@ pages.forEach((page) => {
   });
 
 });
+
