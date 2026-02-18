@@ -37,19 +37,7 @@ body {
   background: white;
 }
 
-.page .front,
-.page .back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  box-sizing: border-box;
-}
+
 
 .page .front img,
 .page .back img {
@@ -132,3 +120,16 @@ body {
   align-items: center;
 }
 
+.page .front,
+.page .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
