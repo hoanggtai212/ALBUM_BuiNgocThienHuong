@@ -45,8 +45,9 @@ body {
   backface-visibility: hidden;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -118,3 +119,4 @@ body {
   font-style: italic;
   
 }
+
