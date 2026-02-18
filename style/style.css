@@ -10,8 +10,7 @@ body {
   margin: 0;
   background: #f0ebe3;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  
   height: 100vh;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -123,5 +122,11 @@ body {
   box-sizing: border-box;
 }
 
+.book {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
 
