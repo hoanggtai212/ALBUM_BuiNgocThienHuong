@@ -107,8 +107,7 @@ let typed = false;
 
 pages.forEach((page) => {
   let startX = 0;
-  const front = page.querySelector('.front');
-  const back = page.querySelector('.back');
+  
 
   const flipForward = () => {
     if (!page.classList.contains('flipped')) {
@@ -131,8 +130,9 @@ pages.forEach((page) => {
     }
   };
 
-  front.addEventListener('click', flipForward);
-  back.addEventListener('click', flipBackward);
+  page.addEventListener('click', () => {
+  page.classList.toggle('flipped');
+});
 
   page.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
@@ -145,6 +145,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
