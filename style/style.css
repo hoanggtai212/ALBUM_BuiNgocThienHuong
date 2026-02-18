@@ -107,4 +107,14 @@ body {
 .end-content span {
   font-size: 14px;
   color: #777;
+
+  .photo-date {
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+  
 }
