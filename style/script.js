@@ -136,6 +136,7 @@ function typewriterEffect(text, element, speed = 40) {
 }
 
 
+
 let currentTopZ = 200;
 let typed = false;
 
@@ -156,11 +157,14 @@ pages.forEach((page) => {
 
 setTimeout(async () => {
 
-  await typewriterEffect(part1, endText, 40);   // bình thường
-  await typewriterEffect(slowPart, endText, 120); // chậm lại
+  endText.innerHTML = ""; // tránh bị gõ chồng nếu lật lại
+
+  await typewriterEffect(part1, endText, 40);      // bình thường
+  await typewriterEffect(slowPart, endText, 120);  // chậm lại
   await typewriterEffect(normalPart, endText, 40); // lại bình thường
 
 }, 800);
+
 
 
         typed = true;
@@ -194,6 +198,7 @@ setTimeout(async () => {
   });
 
 });
+
 
 
 
