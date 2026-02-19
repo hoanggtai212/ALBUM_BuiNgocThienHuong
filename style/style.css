@@ -52,6 +52,12 @@ body {
   transform: rotateY(180deg);
 }
 
+.page .back .photo-date {
+  transform: rotateY(180deg);
+  text-align: center;
+  backface-visibility: hidden;
+}
+
 .page.flipped {
   transform: rotateY(-180deg);
 }
@@ -128,6 +134,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+
 
 
 
