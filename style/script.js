@@ -119,36 +119,33 @@ endPage.appendChild(endBack);
 book.appendChild(endPage);
 pages.push(endPage);
 
-function typewriterEffect(text, element, normalSpeed = 80) {
+function typewriterEffect(text, element) {
   let i = 0;
 
   function type() {
     if (i >= text.length) return;
 
-    // 🎯 Nếu gặp "còn em"
-    if (text.startsWith("còn em", i)) {
-      element.innerHTML += "còn em";
-      i += 6;
-      setTimeout(type, 200); // chậm hơn bình thường
-      return;
+    let speed = 80; // mặc định
+
+    // Nếu đúng ngay vị trí bắt đầu "còn em"
+    if (text.substring(i, i + 6) === "còn em") {
+      speed = 160;
     }
 
-    // 🎯 Nếu gặp "..."
-    if (text.startsWith("...", i)) {
-      element.innerHTML += "...";
-      i += 3;
-      setTimeout(type, 350); // chậm hơn nữa
-      return;
+    // Nếu đúng ngay vị trí bắt đầu "..."
+    if (text.substring(i, i + 3) === "...") {
+      speed = 350;
     }
 
-    // bình thường
     element.innerHTML += text[i] === '\n' ? '<br>' : text[i];
     i++;
-    setTimeout(type, normalSpeed);
+
+    setTimeout(type, speed);
   }
 
   type();
 }
+
 
 
 let currentTopZ = 200;
@@ -165,8 +162,10 @@ pages.forEach((page) => {
 
       if (page === pages[pages.length - 2] && !typed) {
         const endText = document.getElementById('ending-text');
-        const content = `Tôi yêu ba thứ trên thế giới này: Mặt trời ☀️, mặt trăng 🌕 và em ❤️. Mặt trời cho buổi sáng, mặt trăng cho buổi tối còn em ... là cụa toi 😎`;
-        setTimeout(() => typewriterEffect(content, endText), 800);
+        const content = `Tôi yêu ba thứ trên thế giới này: Mặt trời ☀️, mặt trăng 🌕 và em ❤️. Mặt trời cho buổi sáng, mặt trăng cho buổi tối còn em ... là đệ cụa toi 😎`;
+        endText.innerHTML = "";
+        typewriterEffect(content, endText);
+
         typed = true;
       }
 
@@ -198,6 +197,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
