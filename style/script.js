@@ -71,7 +71,7 @@ for (let i = 0; i < images.length; i += 2) {
   
 const caption = document.createElement('div');
 caption.className = 'caption';
-caption.innerText = `🎂 ${dates[i]}`;
+caption.innerText = `${dates[i]}`;
   
   front.appendChild(frontImg);
 front.appendChild(caption);
@@ -84,7 +84,7 @@ front.appendChild(caption);
 
   const backCaption = document.createElement('div');
   backCaption.className = 'caption';
-  backCaption.innerText = `🎂 ${dates[i + 1]}`;
+  backCaption.innerText = `${dates[i + 1]}`;
 
   back.appendChild(backImg);
   back.appendChild(backCaption);
@@ -145,7 +145,7 @@ pages.forEach((page) => {
 
       if (page === pages[pages.length - 2] && !typed) {
         const endText = document.getElementById('ending-text');
-        const content = `I love three things in this world: The sun ☀️, the moon 🌕 and you ❤️.\nThe sun for the morning, the moon for the night and you, forever ❤️❤️❤️`;
+        const content = `Tôi yêu ba thứ trên thế giới này: Mặt trời ☀️, mặt trăng 🌕 và em ❤️. Mặt trời cho buổi sáng, mặt trăng cho buổi tối còn em ... là cụa toi 😎`;
         setTimeout(() => typewriterEffect(content, endText), 800);
         typed = true;
       }
@@ -178,6 +178,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
