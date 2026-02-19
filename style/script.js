@@ -121,18 +121,25 @@ pages.push(endPage);
 
 function typewriterEffect(text, element) {
   let i = 0;
+  let slowRemaining = 0; // số ký tự còn lại cần chạy chậm
 
   function type() {
     if (i >= text.length) return;
 
-    let speed = 80; // mặc định
+    let speed = 80; // tốc độ bình thường
 
-    // Nếu đúng ngay vị trí bắt đầu "còn em"
+    // Nếu bắt đầu cụm "còn em"
     if (text.substring(i, i + 6) === "còn em") {
-      speed = 160;
+      slowRemaining = 6; // 6 ký tự: c ò n _ e m
     }
 
-    // Nếu đúng ngay vị trí bắt đầu "..."
+    // Nếu đang trong cụm cần chạy chậm
+    if (slowRemaining > 0) {
+      speed = 160; // tốc độ chậm cho toàn bộ "còn em"
+      slowRemaining--;
+    }
+
+    // Nếu là dấu ...
     if (text.substring(i, i + 3) === "...") {
       speed = 350;
     }
@@ -145,8 +152,6 @@ function typewriterEffect(text, element) {
 
   type();
 }
-
-
 
 let currentTopZ = 200;
 let typed = false;
@@ -197,6 +202,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
