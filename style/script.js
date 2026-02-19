@@ -119,17 +119,36 @@ endPage.appendChild(endBack);
 book.appendChild(endPage);
 pages.push(endPage);
 
-function typewriterEffect(text, element, speed = 40) {
+function typewriterEffect(text, element, normalSpeed = 40) {
   let i = 0;
+
   function type() {
     if (i < text.length) {
+
+      let currentSpeed = normalSpeed;
+
+      const slowPhrase = "còn em ...";
+
+      // Làm chậm đoạn "còn em ..."
+      if (text.substring(i, i + slowPhrase.length) === slowPhrase) {
+        currentSpeed = 150;
+      }
+
+      // Dừng lâu hơn ở dấu ...
+      if (text.substring(i, i + 3) === "...") {
+        currentSpeed = 500;
+      }
+
       element.innerHTML += text[i] === '\n' ? '<br>' : text[i];
       i++;
-      setTimeout(type, speed);
+      setTimeout(type, currentSpeed);
     }
   }
+
   type();
 }
+
+
 
 let currentTopZ = 200;
 let typed = false;
@@ -178,6 +197,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
