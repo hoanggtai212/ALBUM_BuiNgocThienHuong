@@ -145,8 +145,24 @@ pages.forEach((page) => {
 
       if (page === pages[pages.length - 2] && !typed) {
         const endText = document.getElementById('ending-text');
-        const content = `Tôi yêu ba thứ trên thế giới này: Mặt trời ☀️, mặt trăng 🌕 và em ❤️. Mặt trời cho buổi sáng, mặt trăng cho buổi tối còn em ... là cụa toi 😎`;
-        setTimeout(() => typewriterEffect(content, endText), 800);
+        const part1 = `Tôi yêu ba thứ trên thế giới này: Mặt trời ☀️, mặt trăng 🌕 và em ❤️. Mặt trời cho buổi sáng, mặt trăng cho buổi tối `;
+        const slowPart = `còn em ...`;
+        const normalPart = ` là cụa toi 😎`;
+
+setTimeout(() => {
+  typewriterEffect(part1, endText, 40); // tốc độ bình thường
+
+  setTimeout(() => {
+    typewriterEffect(slowPart, endText, 120); // chậm lại
+
+    setTimeout(() => {
+      typewriterEffect(normalPart, endText, 40); // trở lại bình thường
+    }, slowPart.length * 120);
+
+  }, part1.length * 40);
+
+}, 800);
+
         typed = true;
       }
 
@@ -178,6 +194,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
