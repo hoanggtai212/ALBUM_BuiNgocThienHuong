@@ -120,16 +120,21 @@ book.appendChild(endPage);
 pages.push(endPage);
 
 function typewriterEffect(text, element, speed = 40) {
-  let i = 0;
-  function type() {
-    if (i < text.length) {
-      element.innerHTML += text[i] === '\n' ? '<br>' : text[i];
-      i++;
-      setTimeout(type, speed);
+  return new Promise((resolve) => {
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text[i] === '\n' ? '<br>' : text[i];
+        i++;
+        setTimeout(type, speed);
+      } else {
+        resolve();
+      }
     }
-  }
-  type();
+    type();
+  });
 }
+
 
 let currentTopZ = 200;
 let typed = false;
@@ -149,19 +154,14 @@ pages.forEach((page) => {
         const slowPart = `còn em ...`;
         const normalPart = ` là cụa toi 😎`;
 
-setTimeout(() => {
-  typewriterEffect(part1, endText, 40); // tốc độ bình thường
+setTimeout(async () => {
 
-  setTimeout(() => {
-    typewriterEffect(slowPart, endText, 120); // chậm lại
-
-    setTimeout(() => {
-      typewriterEffect(normalPart, endText, 40); // trở lại bình thường
-    }, slowPart.length * 120);
-
-  }, part1.length * 40);
+  await typewriterEffect(part1, endText, 40);   // bình thường
+  await typewriterEffect(slowPart, endText, 120); // chậm lại
+  await typewriterEffect(normalPart, endText, 40); // lại bình thường
 
 }, 800);
+
 
         typed = true;
       }
@@ -194,6 +194,7 @@ setTimeout(() => {
   });
 
 });
+
 
 
 
