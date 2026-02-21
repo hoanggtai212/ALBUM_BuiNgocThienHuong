@@ -50,24 +50,23 @@
     let inputPass = "";
     const correctPass = "1234"; // 👉 đổi mật khẩu ở đây
 
-    function enterNumber(num) {
-      if (inputPass.length >= 4) return;
+function enterNumber(num) {
+  if (inputPass.length >= 4) return;
 
-      inputPass += num;
+  inputPass += num;
+  updateDots();
+
+  if (inputPass.length === 4) {
+    if (inputPass === correctPass) {
+      document.getElementById("lock-screen").style.display = "none";
+      document.getElementById("book").style.display = "block";
+    } else {
+      inputPass = "";
       updateDots();
-
-      if (inputPass.length === 4) {
-        if (inputPass === correctPass) {
-              document.getElementById("lock-screen").style.display = "none";
-              document.getElementById("book").style.display = "block";
-        }
-        } else {
-          inputPass = "";
-          updateDots();
-          alert("Sai mật khẩu 😜");
-        }
-      }
+      alert("Sai mật khẩu 😜");
     }
+  }
+}
 
     function deleteNumber() {
       inputPass = inputPass.slice(0, -1);
@@ -84,4 +83,5 @@
 
 </body>
 </html>
+
 
