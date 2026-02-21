@@ -131,6 +131,7 @@ body {
   width: 300px;
   height: 400px;
   perspective: 2000px;
+  z-index: 1; /* THÊM */
 }
 
 /* ===== LOCK SCREEN ===== */
@@ -143,6 +144,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  z-index: 9999; /* THÊM DÒNG NÀY */
 }
 
 #lock-screen h2 {
@@ -216,6 +219,7 @@ body {
     background-size: 80%;
   }
 }
+
 
 
 
