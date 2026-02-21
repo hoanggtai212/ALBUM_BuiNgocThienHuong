@@ -138,18 +138,22 @@ body {
   position: fixed;
   inset: 0;
   background: linear-gradient(135deg, #ffd6ec, #ffeaf6);
+
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 999;
-  position: relative;
 }
 
 #lock-screen h2 {
   margin-bottom: 20px;
   font-size: 24px;
   color: #ff1493;
+}
+
+.lock-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #dots {
@@ -170,9 +174,11 @@ body {
 }
 
 .keypad {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 80px);
   gap: 20px;
+  z-index: 1;
 }
 
 .keypad button {
@@ -193,10 +199,6 @@ body {
   transform: scale(0.95);
 }
 
-.keypad .empty {
-  visibility: hidden;
-}
-
 .keypad::before {
   content: "";
   position: absolute;
@@ -213,6 +215,7 @@ body {
     background-size: 80%;
   }
 }
+
 
 
 
