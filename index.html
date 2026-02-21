@@ -58,7 +58,9 @@
 
       if (inputPass.length === 4) {
         if (inputPass === correctPass) {
-          document.getElementById("lock-screen").style.display = "none";
+              document.getElementById("lock-screen").style.display = "none";
+              document.getElementById("book").style.display = "block";
+        }
         } else {
           inputPass = "";
           updateDots();
@@ -82,3 +84,4 @@
 
 </body>
 </html>
+
