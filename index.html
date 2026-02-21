@@ -3,15 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memory Ablum</title>
+  <title>Memory Album</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-  <div class="book" id="book"></div>
-  <audio id="sound" auto loop>
-      <source src="./style/KhoBau.mp3" type="audio/mpeg" />
-    </audio>
+
+  <!-- 🔐 Màn hình nhập pass -->
+  <div id="lock-screen">
+    <h2>Nhập mã khoá</h2>
+    <input type="password" id="passwordInput" maxlength="4">
+    <button onclick="checkPassword()">Mở khoá</button>
+    <p id="error"></p>
+  </div>
+
+  <!-- 📖 Album (ẩn ban đầu) -->
+  <div id="album" style="display:none;">
+    <div class="book" id="book"></div>
+  </div>
+
+  <audio id="sound" loop>
+    <source src="./style/KhoBau.mp3" type="audio/mpeg" />
+  </audio>
+
   <script src="./style/script.js"></script>
+
+  <!-- 🔐 Script mở khoá -->
+  <script>
+    function checkPassword() {
+      const correctPass = "1234"; // 👉 đổi mật khẩu ở đây
+      const input = document.getElementById("passwordInput").value;
+
+      if (input === correctPass) {
+        document.getElementById("lock-screen").style.display = "none";
+        document.getElementById("album").style.display = "block";
+      } else {
+        document.getElementById("error").innerText = "Sai mật khẩu rồi 😜";
+      }
+    }
+  </script>
+
 </body>
 </html>
