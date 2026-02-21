@@ -15,12 +15,6 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
-.book {
-  position: relative;
-  width: 300px;
-  height: 400px;
-  perspective: 2000px;
-}
 
 .page {
   width: 100%;
@@ -132,9 +126,12 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 400px;
+  perspective: 2000px;
+  display: none; /* ẩn ban đầu */
 }
-
 /* ===== LOCK SCREEN ===== */
 
 #lock-screen {
@@ -201,5 +198,6 @@ body {
 .book {
   display: none;
 }
+
 
 
