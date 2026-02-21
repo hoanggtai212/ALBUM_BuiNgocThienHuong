@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.getElementById("lock-screen").remove();
 const book = document.getElementById('book');
 const pages = [];
 const sound = document.getElementById("sound");
@@ -204,6 +204,7 @@ pages.forEach((page) => {
 
 });
 });
+
 
 
 
