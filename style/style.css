@@ -196,4 +196,30 @@ body {
   visibility: hidden;
 }
 
+.keypad {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 20px;
+  z-index: 2;
+}
+
+.keypad::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('./style/image/kitty.png') no-repeat center;
+  background-size: 65%;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (max-width: 480px) {
+  .keypad::before {
+    background-size: 80%;
+  }
+}
+
+
 
