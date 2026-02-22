@@ -137,14 +137,12 @@ body {
   inset: 0;
   height: 100dvh;
 
-  background:
-    url('./image/kitty.png') no-repeat center 65%,
-    linear-gradient(135deg, #ffd6ec, #ffeaf6);
+  background: url('./image/kitty.png') no-repeat center center;
+  background-size: cover;
 
-  background-size: 250px, cover;
-
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   z-index: 9999;
 }
@@ -193,17 +191,22 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 3px solid #ff69b4;
-  background: #fff0f7;
+
+  border: 2px solid rgba(255,255,255,0.6);
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   font-size: 22px;
-  color: #ff1493;
+  color: white;
+
   cursor: pointer;
   transition: 0.3s;
 }
 
 .keypad button:active {
-  background: #ff69b4;
-  color: white;
+  background: rgba(255,255,255,0.4);
   transform: scale(0.95);
 }
 
@@ -222,6 +225,7 @@ body {
     background-size: 80%;
   }
 }
+
 
 
 
