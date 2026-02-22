@@ -135,101 +135,94 @@ body {
   z-index: 1; /* THÊM */
 }
 
-/* ===== LOCK SCREEN ===== */
+/* ===== LOCK SCREEN STYLE FINAL ===== */
 
 #lock-screen {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100dvh;   /* dùng dvh thay vì vh */
-  overflow: hidden;
-
-  background: #f8cfe0;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3d6dc;
+  padding: 20px;
   z-index: 9999;
 }
 
-#lock-screen h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #ff1493;
-  text-align: center; /* THÊM */
-}
-
 .lock-wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;   /* giảm từ 30px xuống 20px */
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
 }
 
-#dots {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
+/* Tiêu đề */
+#lock-screen h2 {
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #e75480;
+  margin-bottom: 15px;
 }
 
-#dots span {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #ff69b4;
-  border-radius: 50%;
+/* Ô nhập pass */
+.password-input {
+  width: 100%;
+  height: 42px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 14px;
+  text-align: center;
+  background: #eeeeee;
+  margin-bottom: 20px;
 }
 
-#dots span.filled {
-  background: #ff69b4;
-}
-
-.keypad button {
-  width: 22vw;
-  height: 22vw;
-  max-width: 85px;
-  max-height: 85px;
-
-  border-radius: 50%;
-  border: 3px solid #ff69b4;
-  background: rgba(255,255,255,0.6);
-
-  font-size: 20px;
-  color: #ff1493;
-}
-
-.keypad button:active {
-  background: rgba(255,255,255,0.4);
-  transform: scale(0.95);
-}
-
-
+/* Keypad */
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6vw;
-
-  width: 80vw;
-  max-width: 320px;
+  gap: 12px;
 }
 
-.keypad::before {
-  content: "";
-  position: absolute;
-  inset: -10px;
-
-  background: url('./image/kitty.png') no-repeat center;
-  background-size: contain;
-
-  opacity: 0.25;
-  pointer-events: none;
-  z-index: -1;
+/* Nút số */
+.keypad button {
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  font-size: 18px;
+  font-family: sans-serif;
+  background: #f2f2f2;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: 0.2s;
 }
 
-@media (max-width: 480px) {
-  .keypad::before {
-    background-size: 80%;
-  }
+.keypad button:active {
+  transform: scale(0.95);
 }
 
+/* Nút X */
+.keypad .delete {
+  background: #e75480;
+  color: white;
+}
 
+/* Nút xác nhận */
+.submit-btn {
+  margin-top: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: none;
+  background: #e75480;
+  color: white;
+  font-size: 22px;
+  box-shadow: 0 6px 12px rgba(231,84,128,0.35);
+  transition: 0.2s;
+}
 
+.submit-btn:active {
+  transform: scale(0.9);
+}
 
