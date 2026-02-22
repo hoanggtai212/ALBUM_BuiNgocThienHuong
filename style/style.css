@@ -137,13 +137,7 @@ body {
   inset: 0;
   height: 100dvh;
 
-  background:
-    linear-gradient(135deg, #ffd6ec, #ffeaf6),
-    url('./image/kitty.png');
-
-  background-size: cover, cover;   /* cho cả 2 layer */
-  background-position: center, center;
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, #ffd6ec, #ffeaf6);
 
   display: grid;
   place-items: center;
@@ -213,9 +207,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
+
   background: url('./image/kitty.png') no-repeat center;
-  background-size: 65%;
-  opacity: 0.25;
+  background-size: contain;
+
+  opacity: 0.35;
   pointer-events: none;
   z-index: -1;
 }
@@ -225,6 +221,7 @@ body {
     background-size: 80%;
   }
 }
+
 
 
 
