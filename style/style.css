@@ -159,10 +159,9 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  padding: 80px 0 50px;
-  text-align: center;
+  justify-content: center;   /* đổi từ space-between -> center */
+  align-items: center;
+  gap: 30px;
 }
 
 #dots {
@@ -183,16 +182,16 @@ body {
 }
 
 .keypad button {
-  width: 18vw;
-  height: 18vw;
-  max-width: 80px;
-  max-height: 80px;
+  width: 22vw;
+  height: 22vw;
+  max-width: 85px;
+  max-height: 85px;
 
   border-radius: 50%;
   border: 3px solid #ff69b4;
   background: rgba(255,255,255,0.6);
 
-  font-size: 22px;
+  font-size: 20px;
   color: #ff1493;
 }
 
@@ -203,33 +202,24 @@ body {
 
 
 .keypad {
-  position: absolute;
-  left: 50%;
-  top: 55%; /* chỉnh số này nếu muốn cao/thấp hơn */
-  transform: translate(-50%, -50%);
-
   display: grid;
-  grid-template-columns: repeat(3, 80px);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6vw;
+
+  width: 80vw;
+  max-width: 320px;
 }
 
 .keypad::before {
   content: "";
   position: absolute;
-
-  width: 320px;
-  height: 420px;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: -10px;
 
   background: url('./image/kitty.png') no-repeat center;
   background-size: contain;
 
   opacity: 0.25;
-  border-radius: 20px;
-
+  pointer-events: none;
   z-index: -1;
 }
 
@@ -238,5 +228,6 @@ body {
     background-size: 80%;
   }
 }
+
 
 
