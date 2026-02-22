@@ -157,12 +157,15 @@ body {
   margin-bottom: 20px;
   font-size: 24px;
   color: #ff1493;
+  text-align: center; /* THÊM */
 }
 
 .lock-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;        /* THÊM */
+  text-align: center; /* THÊM */
 }
 
 #dots {
@@ -224,6 +227,7 @@ body {
     background-size: 80%;
   }
 }
+
 
 
 
