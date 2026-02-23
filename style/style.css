@@ -188,14 +188,15 @@ body {
 
 /* Nút số */
 .keypad button {
-  height: 50px;
-  border-radius: 12px;
-  border: none;
-  font-size: 18px;
-  font-family: sans-serif;
-  background: #f2f2f2;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  transition: 0.2s;
+  width: 100% !important;
+  height: 55px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  background: #f2f2f2 !important;
+  color: #333 !important;
+  font-size: 18px !important;
+  font-family: sans-serif !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08) !important;
 }
 
 .keypad button:active {
@@ -204,8 +205,8 @@ body {
 
 /* Nút X */
 .keypad .delete {
-  background: #e75480;
-  color: white;
+  background: #e75480 !important;
+  color: white !important;
 }
 
 /* Nút xác nhận */
@@ -225,4 +226,5 @@ body {
 .submit-btn:active {
   transform: scale(0.9);
 }
+
 
