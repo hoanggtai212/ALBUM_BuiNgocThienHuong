@@ -9,16 +9,14 @@
 </head>
 <body>
 
-  <!-- 🔐 LOCK SCREEN -->
-  <div id="lock-screen">
-    <h2>Nhập mã khoá</h2>
+ <!-- 🔐 LOCK SCREEN -->
+<div id="lock-screen">
+  <div class="lock-wrapper">
+    <h2>NHẬP PASS ĐI NGƯỜI ĐẸP</h2>
 
-    <div id="dots">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <input type="password" id="password-input"
+           class="password-input"
+           placeholder="Enter password" readonly />
 
     <div class="keypad">
       <button onclick="enterNumber(1)">1</button>
@@ -30,12 +28,15 @@
       <button onclick="enterNumber(7)">7</button>
       <button onclick="enterNumber(8)">8</button>
       <button onclick="enterNumber(9)">9</button>
-      <button class="empty"></button>
+      <button></button>
       <button onclick="enterNumber(0)">0</button>
-      <button onclick="deleteNumber()">⌫</button>
+      <button class="delete" onclick="deleteNumber()">X</button>
     </div>
-  </div>
 
+    <button class="submit-btn" onclick="checkPass()">✔</button>
+  </div>
+</div>
+  
   <!-- 📖 Album -->
   <div class="book" id="book"></div>
 
@@ -47,41 +48,34 @@
 
   <!-- 🔐 PASS SCRIPT -->
   <script>
-    let inputPass = "";
-    const correctPass = "1234"; // 👉 đổi mật khẩu ở đây
+  let inputPass = "";
+  const correctPass = "1234";
 
-function enterNumber(num) {
-  if (inputPass.length >= 4) return;
+  function enterNumber(num) {
+    if (inputPass.length >= 6) return;
+    inputPass += num;
+    document.getElementById("password-input").value = inputPass;
+  }
 
-  inputPass += num;
-  updateDots();
+  function deleteNumber() {
+    inputPass = inputPass.slice(0, -1);
+    document.getElementById("password-input").value = inputPass;
+  }
 
-  if (inputPass.length === 4) {
+  function checkPass() {
     if (inputPass === correctPass) {
       document.getElementById("lock-screen").style.display = "none";
       document.getElementById("book").style.display = "block";
     } else {
       inputPass = "";
-      updateDots();
+      document.getElementById("password-input").value = "";
       alert("Sai mật khẩu 😜");
     }
   }
-}
-
-    function deleteNumber() {
-      inputPass = inputPass.slice(0, -1);
-      updateDots();
-    }
-
-    function updateDots() {
-      const dots = document.querySelectorAll("#dots span");
-      dots.forEach((dot, index) => {
-        dot.classList.toggle("filled", index < inputPass.length);
-      });
-    }
-  </script>
+</script>
 
 </body>
 </html>
+
 
 
