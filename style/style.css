@@ -124,7 +124,7 @@ body {
 
 .book {
   position: absolute;
-  left: 50%;
+  left: 52%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 95vw;          /* to theo màn hình */
@@ -242,6 +242,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
