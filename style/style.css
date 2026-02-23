@@ -129,10 +129,11 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 400px;
+  width: 85vw;          /* to theo màn hình */
+  max-width: 380px;     /* không quá to trên máy lớn */
+  aspect-ratio: 3 / 4;  /* giữ tỉ lệ đẹp */
   perspective: 2000px;
-  z-index: 1; /* THÊM */
+  z-index: 1;
 }
 
 /* ===== LOCK SCREEN STYLE FINAL ===== */
@@ -243,6 +244,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
