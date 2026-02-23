@@ -60,29 +60,10 @@ const dates = [
 
 for (let i = 0; i < images.length; i++) {
 
-  const z = 99 - i * 2;
-
-  // ===== Trang trống trước =====
-  const emptyPage = document.createElement('div');
-  emptyPage.className = 'page';
-  emptyPage.style.zIndex = z;
-
-  const emptyFront = document.createElement('div');
-  emptyFront.className = 'front';
-
-  const emptyBack = document.createElement('div');
-  emptyBack.className = 'back';
-
-  emptyPage.appendChild(emptyFront);
-  emptyPage.appendChild(emptyBack);
-  book.appendChild(emptyPage);
-  pages.push(emptyPage);
-
-
-  // ===== Trang có ảnh sau =====
-  const pageWithImage = document.createElement('div');
-  pageWithImage.className = 'page';
-  pageWithImage.style.zIndex = z - 1;
+  const page = document.createElement('div');
+  page.className = 'page';
+  const z = 99 - i;
+  page.style.zIndex = z;
 
   const front = document.createElement('div');
   front.className = 'front';
@@ -90,6 +71,7 @@ for (let i = 0; i < images.length; i++) {
   const back = document.createElement('div');
   back.className = 'back';
 
+  // FRONT = TRANG BÊN PHẢI (có ảnh)
   const img = document.createElement('img');
   img.src = images[i];
 
@@ -100,10 +82,13 @@ for (let i = 0; i < images.length; i++) {
   front.appendChild(img);
   front.appendChild(caption);
 
-  pageWithImage.appendChild(front);
-  pageWithImage.appendChild(back);
-  book.appendChild(pageWithImage);
-  pages.push(pageWithImage);
+  // BACK = TRANG BÊN TRÁI (trống)
+  // không thêm gì vào back
+
+  page.appendChild(front);
+  page.appendChild(back);
+  book.appendChild(page);
+  pages.push(page);
 }
 
 const endPage = document.createElement('div');
@@ -212,6 +197,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
