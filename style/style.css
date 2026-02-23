@@ -30,9 +30,21 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   background: white;
+  box-shadow: 
+     0 4px 10px rgba(0,0,0,0.15),
+    -2px 0 5px rgba(0,0,0,0.08);
 }
 
-
+.page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -6px;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to right, #ddd, #fff);
+  border-radius: 0 6px 6px 0;
+}
 
 .page .front img,
 .page .back img {
@@ -129,10 +141,11 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 95vw;          /* to theo màn hình */
-  max-width: 420px;     /* không quá to trên máy lớn */
-  aspect-ratio: 3 / 4;  /* giữ tỉ lệ đẹp */
+  width: 95vw;
+  max-width: 420px;
+  aspect-ratio: 3 / 4;
   perspective: 2000px;
+  transform-style: preserve-3d; /* thêm dòng này */
   z-index: 1;
 }
 
@@ -244,6 +257,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
