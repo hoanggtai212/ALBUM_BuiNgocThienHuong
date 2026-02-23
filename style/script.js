@@ -58,43 +58,51 @@ const dates = [
   "01-01-2025"
 ];
 
-for (let i = 0; i < images.length; i += 2) {
-  const page = document.createElement('div');
-  page.className = 'page';
-  const z = 99 - i;
-  page.dataset.originalZ = z;
-  page.style.zIndex = z;
+for (let i = 0; i < images.length; i++) {
 
-  const front = document.createElement('div');
-  front.className = 'front';
-  const frontImg = document.createElement('img');
-  frontImg.src = images[i];
-  
-const caption = document.createElement('div');
-caption.className = 'caption';
-caption.innerText = `${dates[i]}`;
-  
-  front.appendChild(frontImg);
-front.appendChild(caption);
-  
-  const back = document.createElement('div');
-  back.className = 'back';
-  if (images[i + 1]) {
-  const backImg = document.createElement('img');
-  backImg.src = images[i + 1];
+  // ===== Trang có ảnh =====
+  const pageWithImage = document.createElement('div');
+  pageWithImage.className = 'page';
+  const z = 99 - i * 2;
+  pageWithImage.style.zIndex = z;
 
-  const backCaption = document.createElement('div');
-  backCaption.className = 'caption';
-  backCaption.innerText = `${dates[i + 1]}`;
+  const front1 = document.createElement('div');
+  front1.className = 'front';
 
-  back.appendChild(backImg);
-  back.appendChild(backCaption);
-}
+  const back1 = document.createElement('div');
+  back1.className = 'back';
 
-  page.appendChild(front);
-  page.appendChild(back);
-  book.appendChild(page);
-  pages.push(page);
+  const img = document.createElement('img');
+  img.src = images[i];
+
+  const caption = document.createElement('div');
+  caption.className = 'caption';
+  caption.innerText = dates[i] || "";
+
+  back1.appendChild(img);
+  back1.appendChild(caption);
+
+  pageWithImage.appendChild(front1);
+  pageWithImage.appendChild(back1);
+  book.appendChild(pageWithImage);
+  pages.push(pageWithImage);
+
+
+  // ===== Trang trống =====
+  const emptyPage = document.createElement('div');
+  emptyPage.className = 'page';
+  emptyPage.style.zIndex = z - 1;
+
+  const front2 = document.createElement('div');
+  front2.className = 'front';
+
+  const back2 = document.createElement('div');
+  back2.className = 'back';
+
+  emptyPage.appendChild(front2);
+  emptyPage.appendChild(back2);
+  book.appendChild(emptyPage);
+  pages.push(emptyPage);
 }
 
 const endPage = document.createElement('div');
@@ -203,6 +211,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
