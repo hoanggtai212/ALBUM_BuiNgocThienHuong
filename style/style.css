@@ -32,8 +32,6 @@ body {
   background: white;
 }
 
-
-
 .page .front img,
 .page .back img {
   width: 100%;
@@ -244,4 +242,5 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
