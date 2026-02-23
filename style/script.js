@@ -60,17 +60,35 @@ const dates = [
 
 for (let i = 0; i < images.length; i++) {
 
-  // ===== Trang có ảnh =====
+  const z = 99 - i * 2;
+
+  // ===== Trang trống trước =====
+  const emptyPage = document.createElement('div');
+  emptyPage.className = 'page';
+  emptyPage.style.zIndex = z;
+
+  const emptyFront = document.createElement('div');
+  emptyFront.className = 'front';
+
+  const emptyBack = document.createElement('div');
+  emptyBack.className = 'back';
+
+  emptyPage.appendChild(emptyFront);
+  emptyPage.appendChild(emptyBack);
+  book.appendChild(emptyPage);
+  pages.push(emptyPage);
+
+
+  // ===== Trang có ảnh sau =====
   const pageWithImage = document.createElement('div');
   pageWithImage.className = 'page';
-  const z = 99 - i * 2;
-  pageWithImage.style.zIndex = z;
+  pageWithImage.style.zIndex = z - 1;
 
-  const front1 = document.createElement('div');
-  front1.className = 'front';
+  const front = document.createElement('div');
+  front.className = 'front';
 
-  const back1 = document.createElement('div');
-  back1.className = 'back';
+  const back = document.createElement('div');
+  back.className = 'back';
 
   const img = document.createElement('img');
   img.src = images[i];
@@ -79,30 +97,13 @@ for (let i = 0; i < images.length; i++) {
   caption.className = 'caption';
   caption.innerText = dates[i] || "";
 
-  back1.appendChild(img);
-  back1.appendChild(caption);
+  front.appendChild(img);
+  front.appendChild(caption);
 
-  pageWithImage.appendChild(front1);
-  pageWithImage.appendChild(back1);
+  pageWithImage.appendChild(front);
+  pageWithImage.appendChild(back);
   book.appendChild(pageWithImage);
   pages.push(pageWithImage);
-
-
-  // ===== Trang trống =====
-  const emptyPage = document.createElement('div');
-  emptyPage.className = 'page';
-  emptyPage.style.zIndex = z - 1;
-
-  const front2 = document.createElement('div');
-  front2.className = 'front';
-
-  const back2 = document.createElement('div');
-  back2.className = 'back';
-
-  emptyPage.appendChild(front2);
-  emptyPage.appendChild(back2);
-  book.appendChild(emptyPage);
-  pages.push(emptyPage);
 }
 
 const endPage = document.createElement('div');
@@ -211,6 +212,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
