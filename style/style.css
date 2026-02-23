@@ -55,7 +55,7 @@ body {
 }
 
 .page.flipped {
-  transform: rotateY(-180deg);
+  transform: rotateY(-360deg);
 }
 
 .intro-content, .end-content {
@@ -244,6 +244,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
