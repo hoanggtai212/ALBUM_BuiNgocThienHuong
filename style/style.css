@@ -126,9 +126,8 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-45%, -50%);
-  width: 95vw;          /* to theo màn hình */
-  max-width: 420px;     /* không quá to trên máy lớn */
+  transform: translate(-50%, -50%);
+  width: min(90vw, 500px);  /* giảm vw xuống */
   aspect-ratio: 3 / 4;  /* giữ tỉ lệ đẹp */
   perspective: 2000px;
   z-index: 1;
@@ -242,6 +241,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
