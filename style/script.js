@@ -44,18 +44,18 @@ const dates = [
   "12-02-2026",
   "13-02-2026",
   "13-02-2026",
-  "22-07-2018",
-  "10-10-2019",
-  "15-05-2020",
-  "08-08-2021",
-  "11-11-2022",
-  "25-12-2023",
-  "01-01-2024",
-  "14-02-2024",
-  "30-04-2024",
-  "01-06-2024",
-  "20-10-2024",
-  "01-01-2025"
+  "14-02-2026",
+  "14-02-2026",
+  "14-02-2026",
+  "14-02-2026",
+  "15-02-2026",
+  "16-02-2026",
+  "16-02-2026",
+  "16-02-2026",
+  "16-02-2026",
+  "17-02-2026",
+  "17-02-2026",
+  "17-02-2026",
 ];
 
 for (let i = 0; i < images.length; i++) {
@@ -162,7 +162,7 @@ pages.forEach((page) => {
 
       if (page === pages[pages.length - 2] && !typed) {
         const endText = document.getElementById('ending-text');
-        const content = `Tôi yêu ba thứ trên thế giới này: Mặt trời ☀️, mặt trăng 🌕 và em ❤️. Mặt trời cho buổi sáng, mặt trăng cho buổi tối còn em ... là đệ cụa toi 😎`;
+        const content = `Tôi yêu ba thứ trên thế giới này: Mặt trời ☀️, mặt trăng 🌕 và em ❤️. Mặt trời là cho buổi sáng, mặt trăng là cho buổi tối còn em là ... là đệ cụa toi 😎`;
         endText.innerHTML = "";
         typewriterEffect(content, endText);
 
@@ -197,6 +197,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
