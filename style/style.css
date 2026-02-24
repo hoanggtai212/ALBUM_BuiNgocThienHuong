@@ -64,14 +64,16 @@ body {
 }
 
 .intro-content h1 {
-  font-size: 36px;
+  font-size: clamp(30px, 7vw, 48px);
   color: #fb18c2;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 10px rgba(251, 24, 194, 0.3);
 }
 
 .intro-content p {
-  font-size: 20px;
+  font-size: clamp(16px, 4.5vw, 22px);
   color: #555;
+  line-height: 1.6;
 }
 
 .intro-content,.end-content {
@@ -241,16 +243,3 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
