@@ -24,7 +24,7 @@ body {
   position: absolute;
   transform-style: preserve-3d;
   transform-origin: left;
-  transition: transform 1s ease;
+  transition: transform 0.8s cubic-bezier(.65,-0.02,.27,1.01);
   cursor: pointer;
   border: 3px solid #888;
   border-radius: 10px;
@@ -53,7 +53,7 @@ body {
 }
 
 .page.flipped {
-  transform: rotateY(-180deg);
+  transform: rotateY(-180deg) rotateX(3deg);
 }
 
 .intro-content, .end-content {
@@ -242,6 +242,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
