@@ -164,7 +164,14 @@ pages.forEach((page) => {
 
       if (page === pages[pages.length - 2] && !typed) {
         const endText = document.getElementById('ending-text');
-        const content = `Tôi yêu ba thứ trên thế giới này: Mặt trời ☀️, mặt trăng 🌕 và em ❤️. Mặt trời là cho buổi sáng, mặt trăng là cho buổi tối còn em là ... là đệ cụa toi 😎`;
+        const content = `Tôi yêu ba thứ trên thế giới này: 
+        Mặt trời ☀️, 
+        Mặt trăng 🌕
+        Và em ❤️. 
+        Mặt trời là cho buổi sáng, 
+        Mặt trăng là cho buổi tối 
+        Còn em là ... 
+        Là đệ cụa toi 😎`;
         endText.innerHTML = "";
         typewriterEffect(content, endText);
 
@@ -199,6 +206,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
