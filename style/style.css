@@ -35,7 +35,7 @@ body {
 .page .front img,
 .page .back img {
   width: 100%;
-  height: 85%;
+  height: 90%;
   object-fit: cover;
   border: 2px solid #444;
   border-radius: 6px;
@@ -97,8 +97,8 @@ body {
 }
 
 .caption {
-  margin-top: 6px;
-  font-size: 14px;
+  margin-top: 18px;
+  font-size: 20px;
   color: #555;
   text-align: center;
   z-index: 10;
@@ -241,6 +241,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
