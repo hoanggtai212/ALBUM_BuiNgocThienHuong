@@ -91,15 +91,15 @@ body {
 
 .end-content h2 {
   font-family: 'Pacifico', cursive;
-  font-size: 22px;
-  margin-bottom: 12px;
+  font-size: clamp(20px, 5vw, 24px);
+  margin-bottom: 14px;
   color: #333;
 }
 
 .end-content span {
-  font-size: 16px;
+  font-size: clamp(14px, 3.8vw, 17px);
   color: #444;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .caption {
@@ -247,6 +247,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
