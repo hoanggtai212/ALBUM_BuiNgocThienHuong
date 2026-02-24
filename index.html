@@ -12,7 +12,10 @@
  <!-- 🔐 LOCK SCREEN -->
 <div id="lock-screen">
   <div class="lock-wrapper">
-    <h2>NHẬP PASS ĐI NGƯỜI ĐẸP</h2>
+    <h2>
+  NHẬP PASS ĐI NGƯỜI ĐẸP <br>
+  <span class="hint">(ngày / tháng / năm)</span>
+</h2>
 
     <input type="password" id="password-input"
            class="password-input"
@@ -49,10 +52,10 @@
   <!-- 🔐 PASS SCRIPT -->
   <script>
   let inputPass = "";
-  const correctPass = "301212";
+  const correctPass = "301213";
 
   function enterNumber(num) {
-    if (inputPass.length >= 6) return;
+    if (inputPass.length >= 8) return;
     inputPass += num;
     document.getElementById("password-input").value = inputPass;
   }
@@ -76,6 +79,7 @@
 
 </body>
 </html>
+
 
 
 
