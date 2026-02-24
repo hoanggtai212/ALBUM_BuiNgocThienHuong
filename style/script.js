@@ -164,7 +164,7 @@ pages.forEach((page) => {
 
       if (page === pages[pages.length - 2] && !typed) {
         const endText = document.getElementById('ending-text');
-        const content = `Tôi yêu ba thứ trên thế giới này: 
+        const content = `Toi iu three (3) thứ trên thế giới này: 
         Mặt trời ☀️, 
         Mặt trăng 🌕,
         Và em ❤️. 
@@ -208,6 +208,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
