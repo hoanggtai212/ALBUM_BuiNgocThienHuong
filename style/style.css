@@ -4,7 +4,7 @@
   user-select: none;
   cursor: auto;
   box-sizing: border-box;
-  font-family: 'Pacifico', cursive;
+  
 }
 
 html, body {
@@ -15,6 +15,7 @@ html, body {
 body {
   margin: 0;
   background: #ffeaf6;
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -89,14 +90,16 @@ body {
 }
 
 .end-content h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-family: 'Pacifico', cursive;
+  font-size: 26px;
+  margin-bottom: 15px;
   color: #333;
 }
 
 .end-content span {
-  font-size: 14px;
-  color: #777;
+  font-size: 20px;
+  color: #444;
+  line-height: 1.7;
 }
 
 .caption {
@@ -244,4 +247,5 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
