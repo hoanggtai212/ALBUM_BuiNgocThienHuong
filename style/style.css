@@ -124,10 +124,9 @@ body {
 
 .book {
   position: absolute;
-  left: 52%;
-  right: 52%;
+  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-45%, -50%);
   width: 95vw;          /* to theo màn hình */
   max-width: 420px;     /* không quá to trên máy lớn */
   aspect-ratio: 3 / 4;  /* giữ tỉ lệ đẹp */
@@ -243,6 +242,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
