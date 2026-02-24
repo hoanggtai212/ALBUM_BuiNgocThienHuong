@@ -166,12 +166,14 @@ pages.forEach((page) => {
         const endText = document.getElementById('ending-text');
         const content = `Tôi yêu ba thứ trên thế giới này: 
         Mặt trời ☀️, 
-        Mặt trăng 🌕
+        Mặt trăng 🌕,
         Và em ❤️. 
-        Mặt trời là cho buổi sáng, 
-        Mặt trăng là cho buổi tối 
-        Còn em là ... 
-        Là đệ cụa toi 😎`;
+        Mặt trời là ánh sáng của ban mai ✨,
+        Mặt trăng là vẻ đẹp của màn đêm 🌙,
+        Còn em là 🤔 ... 
+        Là đệ cụa toi 😎
+        Ý nhầm, còn e là 🤔 ... 
+        Là điều ngọt ngào nhất của anh 😘`;
         endText.innerHTML = "";
         typewriterEffect(content, endText);
 
@@ -206,6 +208,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
