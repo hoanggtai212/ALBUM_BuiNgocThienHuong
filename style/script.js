@@ -20,7 +20,7 @@ introFront.className = 'front';
 introFront.innerHTML = `
   <div class="intro-content">
     <h1>Memory Album</h1>
-    <div class="author"><em>Bùi Ngọc Thiên Hương</em></div>
+    <div class="author"><em>Bùi Ngọc Thiên Hương 😍</em></div>
     <div>🎁❤️🎁</div>
   </div>
 `;
@@ -169,8 +169,10 @@ pages.forEach((page) => {
           Mặt trời (the Sun) ☀️, 
           Mặt trăng (the Moon)🌕,
           Và em (the Exception) ❤️. 
-          MặtTrời là ánh sáng của ban mai🌅,
-          MặtTrăng là vẻ đẹp của màn đêm🌌,
+          Mặt trời là 
+          Ánh sáng của ban mai 🌅,
+          Mặt trăng là 
+          Vẻ đẹp của màn đêm 🌌,
           Còn e là 🤔 ... 
           Là đệ cụa toi 😎
           Ý nhầm, còn e là 🤔 ... 
@@ -210,6 +212,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
