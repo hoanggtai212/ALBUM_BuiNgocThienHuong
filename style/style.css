@@ -213,28 +213,32 @@ body {
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 16px;
+  width: 100%;
+  max-width: 280px;  /* 👈 thêm dòng này */
 }
 
 /* Nút số */
 .keypad button {
   width: 100%;
-  height: 60px;
-  border-radius: 18px;
+  aspect-ratio: 1 / 1;  /* 👈 làm thành hình vuông */
+  border-radius: 20px;
   border: none;
   background: #f9f9f9;
   color: #444;
   font-size: 20px;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   box-shadow:
     0 8px 20px rgba(0,0,0,0.08),
     inset 0 -2px 4px rgba(0,0,0,0.04);
-  transition: all 0.2s ease;
-}
 
-.keypad button:hover {
-  background: #ffffff;
+  transition: all 0.2s ease;
 }
 
 .keypad button:active {
@@ -259,8 +263,8 @@ body {
 /* Nút xác nhận */
 .submit-btn {
   margin-top: 25px;
-  width: 65px;
-  height: 65px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   border: none;
 
@@ -277,6 +281,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
