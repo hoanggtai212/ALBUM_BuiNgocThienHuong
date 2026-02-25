@@ -165,15 +165,15 @@ pages.forEach((page) => {
       if (page === pages[pages.length - 2] && !typed) {
         const endText = document.getElementById('ending-text');
         const content = `Toi iu 3 thứ trên thế giới này: 
-        Mặt trời (the Sun) ☀️, 
-        Mặt trăng (the Moon)🌕,
-        Và em (the Exception) ❤️. 
-        Mặt trời là ánh sáng của ban mai🌅,
-        Mặt trăng là vẻ đẹp của màn đêm🌌,
-        Còn em là 🤔 ... 
-        Là đệ cụa toi 😎
-        Ý nhầm, còn e là 🤔 ... 
-        Là điều ngọt ngào nhất của a 😘`;
+          Mặt trời (the Sun) ☀️, 
+          Mặt trăng (the Moon)🌕,
+          Và em (the Exception) ❤️. 
+          Mặt trời là ánh sáng của ban mai🌅,
+          Mặt trăng là vẻ đẹp của màn đêm🌌,
+          Còn em là 🤔 ... 
+          Là đệ cụa toi 😎
+          Ý nhầm, còn e là 🤔 ... 
+          Là điều ngọt ngào nhất của a 😘`;
         endText.innerHTML = "";
         typewriterEffect(content, endText);
 
@@ -181,8 +181,9 @@ pages.forEach((page) => {
       }
 
       setTimeout(() => {
-        page.style.zIndex = 0;
-      }, 1000);
+  currentTopZ++;
+  page.style.zIndex = currentTopZ;
+}, 1000);
     }
   };
 
@@ -208,6 +209,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
