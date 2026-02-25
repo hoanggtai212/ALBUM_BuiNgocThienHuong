@@ -337,12 +337,8 @@ input {
 }
 
 .spin {
-  animation: lockFlip 0.8s ease;
+  animation: lockFlip 0.8s ease forwards;
   transform-style: preserve-3d;
-}
-
-.spin {
-  animation: lockSpin 0.8s ease;
 }
 
 /* Khi mở */
@@ -351,4 +347,5 @@ input {
   color: #4CAF50;
   text-shadow: 0 0 40px rgba(76,175,80,0.9);
 }
+
 
