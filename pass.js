@@ -14,12 +14,12 @@ function getInput() {
 function enterNumber(num) {
   if (inputPass.length >= 8) return;
   inputPass += num;
-  getInput().value = inputPass;
+  getInput().value = "*".repeat(inputPass.length);
 }
 
 function deleteNumber() {
   inputPass = inputPass.slice(0, -1);
-  getInput().value = inputPass;
+  getInput().value = "*".repeat(inputPass.length);
 }
 
 function checkPass() {
