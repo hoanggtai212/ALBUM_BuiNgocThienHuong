@@ -10,6 +10,8 @@
 html, body {
   height: 100%;
   overflow: hidden;
+  touch-action: manipulation;
+  overscroll-behavior: none;
 }
 
 body {
@@ -384,5 +386,6 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
