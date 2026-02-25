@@ -149,7 +149,19 @@ body {
 
 /* ===== LOCK SCREEN STYLE FINAL ===== */
 
-#lock-screen {
+#lock-screen-1,
+#lock-screen-2,
+#lock-screen-3 {
+  position: fixed;
+  inset: 0;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3d6dc;
+  padding: 20px;
+  z-index: 9999;
+}
   position: fixed;
   inset: 0;
   min-height: 100dvh;
@@ -168,7 +180,9 @@ body {
 }
 
 /* Tiêu đề */
-#lock-screen h2 {
+#lock-screen-1 h2,
+#lock-screen-2 h2,
+#lock-screen-3 h2 {
   font-family: sans-serif;
   font-size: 18px;
   font-weight: bold;
@@ -255,6 +269,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
