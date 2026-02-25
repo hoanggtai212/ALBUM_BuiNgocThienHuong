@@ -24,11 +24,15 @@ function deleteNumber() {
 
 function checkPass() {
   const currentScreen = document.getElementById("lock-screen-" + currentLock);
+  const lockIcon = currentScreen.querySelector(".lock-icon");
   const input = getInput();
   const submitBtn = currentScreen.querySelector(".submit-btn");
 
   if (inputPass === passwords[currentLock]) {
-
+    
+    lockIcon.textContent = "🔓";
+    lockIcon.classList.add("unlock");
+    
     input.classList.add("input-success");
     submitBtn.classList.add("submit-success");
 
