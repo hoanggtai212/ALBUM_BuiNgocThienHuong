@@ -31,35 +31,46 @@ function checkPass() {
     const overlay = document.getElementById("unlock-overlay");
     const bigLock = overlay.querySelector(".big-lock");
 
-    // Hiện overlay
-    overlay.style.display = "flex";
-    bigLock.textContent = "🔒";
-    bigLock.classList.add("spin");
+if (inputPass === passwords[currentLock]) {
 
-setTimeout(() => {
-  bigLock.textContent = "🔓";
-  bigLock.classList.add("open");
-}, 1800); // bằng thời gian animation
+  const overlay = document.getElementById("unlock-overlay");
+  const bigLock = overlay.querySelector(".big-lock");
 
-    // Sau khi mở xong → chuyển màn
-   setTimeout(() => {
+  overlay.style.display = "flex";
 
-  overlay.style.display = "none";
+  // reset trạng thái trước khi quay
   bigLock.classList.remove("spin", "open");
+  void bigLock.offsetWidth; // force reflow để animation chạy lại
 
-  currentScreen.style.display = "none";
+  // bắt đầu quay
+  bigLock.classList.add("spin");
 
-  inputPass = "";
-  getInput().value = "";
+  // sau khi quay xong thì phóng to mở
+  setTimeout(() => {
+    bigLock.classList.add("open");
+  }, 2000); // bằng thời gian animation
 
-  if (currentLock < 3) {
-    currentLock++;
-    document.getElementById("lock-screen-" + currentLock).style.display = "flex";
-  } else {
-    document.getElementById("book").style.display = "block";
-  }
+  // sau khi mở xong → chuyển màn
+  setTimeout(() => {
 
-}, 2300); // 👈 sửa số này
+    overlay.style.display = "none";
+    bigLock.classList.remove("spin", "open");
+
+    currentScreen.style.display = "none";
+
+    inputPass = "";
+    getInput().value = "";
+
+    if (currentLock < 3) {
+      currentLock++;
+      document.getElementById("lock-screen-" + currentLock).style.display = "flex";
+    } else {
+      document.getElementById("book").style.display = "block";
+    }
+
+  }, 2500);
+
+}
 
   } else {
 
