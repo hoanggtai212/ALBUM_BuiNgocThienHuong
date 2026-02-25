@@ -160,7 +160,7 @@ body {
   align-items: flex-start;
   padding-top: 80px;
   background: #f3d6dc;
-  padding: 20px;
+  padding: 80px 20px;
   z-index: 9999;
 }
 
@@ -277,6 +277,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
