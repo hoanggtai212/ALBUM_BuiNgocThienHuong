@@ -175,8 +175,11 @@ body {
 
 .lock-wrapper h2 {
   text-align: center;
-  line-height: 1.3;
-  min-height: 90px; 
+  line-height: 1.4;
+  height: 110px;      /* 👈 đổi thành height cố định */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .lock-wrapper h2 span {
@@ -280,6 +283,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
