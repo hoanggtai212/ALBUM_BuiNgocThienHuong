@@ -2,9 +2,9 @@ let currentLock = 1;
 let inputPass = "";
 
 const passwords = {
-  1: "301213",
-  2: "1",
-  3: "2"
+  1: "30122013",
+  2: "02122010",
+  3: "10022026"
 };
 
 function getInput() {
