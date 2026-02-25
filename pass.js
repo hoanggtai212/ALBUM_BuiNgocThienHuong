@@ -33,23 +33,38 @@ function checkPass() {
 
     overlay.style.display = "flex";
 
-    // reset animation
+    // reset trạng thái
     bigLock.classList.remove("spin", "open");
     void bigLock.offsetWidth;
 
-    // quay
+    // 1️⃣ Quay (vẫn là 🔒)
     bigLock.classList.add("spin");
 
-    // sau khi quay xong → mở khóa
+    // 2️⃣ Sau khi quay xong → bung to
     setTimeout(() => {
       bigLock.classList.add("open");
     }, 2000);
 
-    // sau khi mở xong → chuyển màn
+    // 3️⃣ Sau khi bung → đổi thành 🔓
+    setTimeout(() => {
+      const front = bigLock.querySelector(".front");
+      const back = bigLock.querySelector(".back");
+
+      if (front) front.textContent = "🔓";
+      if (back) back.textContent = "🔓";
+    }, 2400);
+
+    // 4️⃣ Ẩn overlay & chuyển màn
     setTimeout(() => {
 
       overlay.style.display = "none";
       bigLock.classList.remove("spin", "open");
+
+      // reset lại thành 🔒 cho lần sau
+      const front = bigLock.querySelector(".front");
+      const back = bigLock.querySelector(".back");
+      if (front) front.textContent = "🔒";
+      if (back) back.textContent = "🔒";
 
       currentScreen.style.display = "none";
 
@@ -63,7 +78,7 @@ function checkPass() {
         document.getElementById("book").style.display = "block";
       }
 
-    }, 2500);
+    }, 3000);
 
   } else {
 
