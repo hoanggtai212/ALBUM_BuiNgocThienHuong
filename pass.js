@@ -36,31 +36,30 @@ function checkPass() {
     bigLock.textContent = "🔒";
     bigLock.classList.add("spin");
 
-    // Sau khi xoay xong → mở khóa
-    setTimeout(() => {
-      bigLock.textContent = "🔓";
-      bigLock.classList.add("open");
-    }, 800);
+setTimeout(() => {
+  bigLock.textContent = "🔓";
+  bigLock.classList.add("open");
+}, 1800); // bằng thời gian animation
 
     // Sau khi mở xong → chuyển màn
-    setTimeout(() => {
+   setTimeout(() => {
 
-      overlay.style.display = "none";
-      bigLock.classList.remove("spin", "open");
+  overlay.style.display = "none";
+  bigLock.classList.remove("spin", "open");
 
-      currentScreen.style.display = "none";
+  currentScreen.style.display = "none";
 
-      inputPass = "";
-      getInput().value = "";
+  inputPass = "";
+  getInput().value = "";
 
-      if (currentLock < 3) {
-        currentLock++;
-        document.getElementById("lock-screen-" + currentLock).style.display = "flex";
-      } else {
-        document.getElementById("book").style.display = "block";
-      }
+  if (currentLock < 3) {
+    currentLock++;
+    document.getElementById("lock-screen-" + currentLock).style.display = "flex";
+  } else {
+    document.getElementById("book").style.display = "block";
+  }
 
-    }, 1600);
+}, 2300); // 👈 sửa số này
 
   } else {
 
