@@ -157,10 +157,10 @@ body {
   min-height: 100dvh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding-top: 80px;
   background: #f3d6dc;
-  padding: 80px 20px;
+  padding: 20px;
   z-index: 9999;
 }
 
@@ -282,6 +282,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
