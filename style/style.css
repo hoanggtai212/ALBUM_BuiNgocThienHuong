@@ -262,7 +262,6 @@ body {
 
 /* Nút xác nhận */
 .submit-btn {
-  margin-top: 25px;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -281,6 +280,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
