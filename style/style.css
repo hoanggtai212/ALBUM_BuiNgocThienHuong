@@ -158,7 +158,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 80px;
   background: #f3d6dc;
   padding: 20px;
   z-index: 9999;
@@ -171,6 +170,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 18px;   /* 👈 thêm dòng này */
 }
 
 .lock-wrapper h2 {
@@ -207,7 +207,6 @@ body {
   font-size: 14px;
   text-align: center;
   background: #eeeeee;
-  margin-bottom: 20px;
 }
 
 /* Keypad */
@@ -282,6 +281,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
