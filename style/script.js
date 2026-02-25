@@ -171,18 +171,18 @@ pages.forEach((page) => {
 
       if (page === pages[pages.length - 2] && !typed) {
         const endText = document.getElementById('ending-text');
-        const content = `A iu 3 thứ trên thế giới này: 
+        const content = `A iu 3 thứ trên thế giới này : 
           Mặt trời (the Sun) ☀️, 
-          Mặt trăng (the Moon)🌕,
+          Mặt trăg (the Moon)🌕,
           Và em (the Exception) ❤️. 
           Mặt trời là ...
-          Ánh sáng của ban mai 🌅,
-          Mặt trăng là ...
+          Ánh ság của ban mai 🌅,
+          Mặt trăg là ...
           Vẻ đẹp của màn đêm 🌌,
           Còn e là 🤔 ... 
           Là đệ cụa toi 😎
           Ý nhầm, còn e là 🤔 ... 
-          Là điều ngọt ngào nhứt của a 😘`;
+          Là đìu ngọt ngào nhứt của a 😘`;
         endText.innerHTML = "";
         typewriterEffect(content, endText);
 
@@ -218,6 +218,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
