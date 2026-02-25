@@ -341,7 +341,7 @@ input {
 }
 
 .spin {
-  animation: lockSpin 1.8s cubic-bezier(.2,.8,.2,1) forwards;
+  animation: lockSpin 2s ease-out forwards;
   transform-style: preserve-3d;
 }
 
@@ -351,6 +351,7 @@ input {
   color: #4CAF50;
   text-shadow: 0 0 40px rgba(76,175,80,0.9);
 }
+
 
 
 
