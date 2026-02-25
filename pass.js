@@ -23,55 +23,55 @@ function deleteNumber() {
 }
 
 function checkPass() {
+
   const currentScreen = document.getElementById("lock-screen-" + currentLock);
-  const lockIcon = currentScreen.querySelector(".lock-icon");
-  const input = getInput();
-  const submitBtn = currentScreen.querySelector(".submit-btn");
 
   if (inputPass === passwords[currentLock]) {
-    
-    lockIcon.textContent = "🔓";
-    lockIcon.classList.add("unlock");
-    
-    input.classList.add("input-success");
-    submitBtn.classList.add("submit-success");
 
+    const overlay = document.getElementById("unlock-overlay");
+    const bigLock = overlay.querySelector(".big-lock");
+
+    // Hiện overlay
+    overlay.style.display = "flex";
+    bigLock.textContent = "🔒";
+    bigLock.classList.add("spin");
+
+    // Sau khi xoay xong → mở khóa
     setTimeout(() => {
-      currentScreen.classList.add("success");
+      bigLock.textContent = "🔓";
+      bigLock.classList.add("open");
+    }, 800);
 
-      setTimeout(() => {
-        currentScreen.style.display = "none";
-        currentScreen.classList.remove("success");
-        input.classList.remove("input-success");
-        submitBtn.classList.remove("submit-success");
+    // Sau khi mở xong → chuyển màn
+    setTimeout(() => {
 
-        inputPass = "";
-        input.value = "";
+      overlay.style.display = "none";
+      bigLock.classList.remove("spin", "open");
 
-        if (currentLock < 3) {
-          currentLock++;
-          document.getElementById("lock-screen-" + currentLock).style.display = "flex";
-        } else {
-          document.getElementById("book").style.display = "block";
-        }
+      currentScreen.style.display = "none";
 
-      }, 600);
+      inputPass = "";
+      getInput().value = "";
 
-    }, 300);
+      if (currentLock < 3) {
+        currentLock++;
+        document.getElementById("lock-screen-" + currentLock).style.display = "flex";
+      } else {
+        document.getElementById("book").style.display = "block";
+      }
+
+    }, 1600);
 
   } else {
 
-    input.classList.add("input-error");
+    // Sai → rung
     currentScreen.classList.add("shake");
-    currentScreen.classList.add("flash-error");
 
     setTimeout(() => {
-      input.classList.remove("input-error");
       currentScreen.classList.remove("shake");
-      currentScreen.classList.remove("flash-error");
     }, 400);
 
     inputPass = "";
-    input.value = "";
+    getInput().value = "";
   }
 }
