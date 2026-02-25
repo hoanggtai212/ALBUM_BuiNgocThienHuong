@@ -1,4 +1,6 @@
-
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+});
 const book = document.getElementById('book');
 const pages = [];
 const sound = document.getElementById("sound");
@@ -218,6 +220,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
