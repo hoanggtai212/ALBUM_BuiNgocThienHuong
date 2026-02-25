@@ -7,87 +7,93 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="./style/style.css">
-
-<style>
-  .lock-screen{
-    position:fixed;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#fff;
-    z-index:9999;
-  }
-</style>
 </head>
 <body>
 
 <!-- 🔐 LOCK 1 -->
-<div id="lock1" class="lock-screen">
+<div id="lock-screen-1">
   <div class="lock-wrapper">
-    <h2>NHẬP PASS 1 💖<br><span class="hint">(ngày / tháng / năm)</span></h2>
-    <input type="password" id="input1" class="password-input" readonly />
+    <h2>
+      NHẬP PASS ĐI NGƯỜI ĐẸP <br>
+      <span class="hint">(ngày / tháng / năm)</span>
+    </h2>
+
+    <input type="password" id="password-input-1"
+           class="password-input"
+           placeholder="Enter password" readonly />
+
     <div class="keypad">
-      <button onclick="press(1)">1</button>
-      <button onclick="press(2)">2</button>
-      <button onclick="press(3)">3</button>
-      <button onclick="press(4)">4</button>
-      <button onclick="press(5)">5</button>
-      <button onclick="press(6)">6</button>
-      <button onclick="press(7)">7</button>
-      <button onclick="press(8)">8</button>
-      <button onclick="press(9)">9</button>
+      <button onclick="enterNumber(1)">1</button>
+      <button onclick="enterNumber(2)">2</button>
+      <button onclick="enterNumber(3)">3</button>
+      <button onclick="enterNumber(4)">4</button>
+      <button onclick="enterNumber(5)">5</button>
+      <button onclick="enterNumber(6)">6</button>
+      <button onclick="enterNumber(7)">7</button>
+      <button onclick="enterNumber(8)">8</button>
+      <button onclick="enterNumber(9)">9</button>
       <button></button>
-      <button onclick="press(0)">0</button>
-      <button onclick="del()">X</button>
+      <button onclick="enterNumber(0)">0</button>
+      <button class="delete" onclick="deleteNumber()">X</button>
     </div>
-    <button onclick="check()">✔</button>
+
+    <button class="submit-btn" onclick="checkPass()">✔</button>
   </div>
 </div>
 
 <!-- 🔐 LOCK 2 -->
-<div id="lock2" class="lock-screen" style="display:none;">
+<div id="lock-screen-2" style="display:none;">
   <div class="lock-wrapper">
-    <h2>NHẬP PASS 2 🌙</h2>
-    <input type="password" id="input2" class="password-input" readonly />
+    <h2>PASS 2 NÈ 😜</h2>
+
+    <input type="password" id="password-input-2"
+           class="password-input"
+           placeholder="Enter password" readonly />
+
     <div class="keypad">
-      <button onclick="press(1)">1</button>
-      <button onclick="press(2)">2</button>
-      <button onclick="press(3)">3</button>
-      <button onclick="press(4)">4</button>
-      <button onclick="press(5)">5</button>
-      <button onclick="press(6)">6</button>
-      <button onclick="press(7)">7</button>
-      <button onclick="press(8)">8</button>
-      <button onclick="press(9)">9</button>
+      <button onclick="enterNumber(1)">1</button>
+      <button onclick="enterNumber(2)">2</button>
+      <button onclick="enterNumber(3)">3</button>
+      <button onclick="enterNumber(4)">4</button>
+      <button onclick="enterNumber(5)">5</button>
+      <button onclick="enterNumber(6)">6</button>
+      <button onclick="enterNumber(7)">7</button>
+      <button onclick="enterNumber(8)">8</button>
+      <button onclick="enterNumber(9)">9</button>
       <button></button>
-      <button onclick="press(0)">0</button>
-      <button onclick="del()">X</button>
+      <button onclick="enterNumber(0)">0</button>
+      <button class="delete" onclick="deleteNumber()">X</button>
     </div>
-    <button onclick="check()">✔</button>
+
+    <button class="submit-btn" onclick="checkPass()">✔</button>
   </div>
 </div>
 
 <!-- 🔐 LOCK 3 -->
-<div id="lock3" class="lock-screen" style="display:none;">
+<div id="lock-screen-3" style="display:none;">
   <div class="lock-wrapper">
-    <h2>PASS CUỐI CÙNG 🔥</h2>
-    <input type="password" id="input3" class="password-input" readonly />
+    <h2>PASS CUỐI CÙNG 😏</h2>
+
+    <input type="password" id="password-input-3"
+           class="password-input"
+           placeholder="Enter password" readonly />
+
     <div class="keypad">
-      <button onclick="press(1)">1</button>
-      <button onclick="press(2)">2</button>
-      <button onclick="press(3)">3</button>
-      <button onclick="press(4)">4</button>
-      <button onclick="press(5)">5</button>
-      <button onclick="press(6)">6</button>
-      <button onclick="press(7)">7</button>
-      <button onclick="press(8)">8</button>
-      <button onclick="press(9)">9</button>
+      <button onclick="enterNumber(1)">1</button>
+      <button onclick="enterNumber(2)">2</button>
+      <button onclick="enterNumber(3)">3</button>
+      <button onclick="enterNumber(4)">4</button>
+      <button onclick="enterNumber(5)">5</button>
+      <button onclick="enterNumber(6)">6</button>
+      <button onclick="enterNumber(7)">7</button>
+      <button onclick="enterNumber(8)">8</button>
+      <button onclick="enterNumber(9)">9</button>
       <button></button>
-      <button onclick="press(0)">0</button>
-      <button onclick="del()">X</button>
+      <button onclick="enterNumber(0)">0</button>
+      <button class="delete" onclick="deleteNumber()">X</button>
     </div>
-    <button onclick="check()">✔</button>
+
+    <button class="submit-btn" onclick="checkPass()">✔</button>
   </div>
 </div>
 
@@ -99,51 +105,7 @@
 </audio>
 
 <script src="./style/script.js" defer></script>
-
-<script>
-let currentLock = 1;
-let input = "";
-
-const passwords = {
-  1: "301213",
-  2: "123456",
-  3: "999999"
-};
-
-function getCurrentInput(){
-  return document.getElementById("input"+currentLock);
-}
-
-function press(num){
-  if(input.length >= 8) return;
-  input += num;
-  getCurrentInput().value = input;
-}
-
-function del(){
-  input = input.slice(0,-1);
-  getCurrentInput().value = input;
-}
-
-function check(){
-  if(input === passwords[currentLock]){
-    document.getElementById("lock"+currentLock).style.display = "none";
-    input = "";
-
-    if(currentLock < 3){
-      currentLock++;
-      document.getElementById("lock"+currentLock).style.display = "flex";
-    }else{
-      document.getElementById("book").style.display = "block";
-    }
-
-  }else{
-    alert("Sai mật khẩu 😜");
-    input = "";
-    getCurrentInput().value = "";
-  }
-}
-</script>
+<script src="pass.js"></script>
 
 </body>
 </html>
