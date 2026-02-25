@@ -219,8 +219,3 @@ pages.forEach((page) => {
 
 });
 
-
-
-
-
-
