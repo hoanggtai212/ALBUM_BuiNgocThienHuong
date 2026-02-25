@@ -25,14 +25,6 @@ introFront.innerHTML = `
   </div>
 `;
 
-.author {
-  font-size: clamp(22px, 5vw, 34px);
-  margin-top: 15px;
-  color: #333;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.15);
-}
 
 const introBack = document.createElement('div');
 introBack.className = 'back';
@@ -219,14 +211,5 @@ pages.forEach((page) => {
   });
 
 });
-
-
-
-
-
-
-
-
-
 
 
