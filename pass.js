@@ -3,8 +3,8 @@ let inputPass = "";
 
 const passwords = {
   1: "301213",
-  2: "123456",
-  3: "999999"
+  2: "1",
+  3: "2"
 };
 
 function getInput() {
