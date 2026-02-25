@@ -23,21 +23,51 @@ function deleteNumber() {
 }
 
 function checkPass() {
+  const currentScreen = document.getElementById("lock-screen-" + currentLock);
+  const input = getInput();
+  const submitBtn = currentScreen.querySelector(".submit-btn");
+
   if (inputPass === passwords[currentLock]) {
 
-    document.getElementById("lock-screen-" + currentLock).style.display = "none";
-    inputPass = "";
+    input.classList.add("input-success");
+    submitBtn.classList.add("submit-success");
 
-    if (currentLock < 3) {
-      currentLock++;
-      document.getElementById("lock-screen-" + currentLock).style.display = "flex";
-    } else {
-      document.getElementById("book").style.display = "block";
-    }
+    setTimeout(() => {
+      currentScreen.classList.add("success");
+
+      setTimeout(() => {
+        currentScreen.style.display = "none";
+        currentScreen.classList.remove("success");
+        input.classList.remove("input-success");
+        submitBtn.classList.remove("submit-success");
+
+        inputPass = "";
+        input.value = "";
+
+        if (currentLock < 3) {
+          currentLock++;
+          document.getElementById("lock-screen-" + currentLock).style.display = "flex";
+        } else {
+          document.getElementById("book").style.display = "block";
+        }
+
+      }, 600);
+
+    }, 300);
 
   } else {
-    alert("Sai mật khẩu 😜");
+
+    input.classList.add("input-error");
+    currentScreen.classList.add("shake");
+    currentScreen.classList.add("flash-error");
+
+    setTimeout(() => {
+      input.classList.remove("input-error");
+      currentScreen.classList.remove("shake");
+      currentScreen.classList.remove("flash-error");
+    }, 400);
+
     inputPass = "";
-    getInput().value = "";
+    input.value = "";
   }
 }
