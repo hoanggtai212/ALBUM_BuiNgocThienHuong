@@ -30,7 +30,7 @@ function checkPass() {
 
     if (currentLock < 3) {
       currentLock++;
-      document.getElementById("lock-screen-" + currentLock).style.display = "block";
+      document.getElementById("lock-screen-" + currentLock).style.display = "flex";
     } else {
       document.getElementById("book").style.display = "block";
     }
