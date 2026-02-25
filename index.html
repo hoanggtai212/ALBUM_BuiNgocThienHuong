@@ -13,7 +13,6 @@
 <!-- 🔐 LOCK 1 -->
 <div id="lock-screen-1">
   <div class="lock-wrapper">
-    <div class="lock-icon">🔒</div>
     <h2>
   NHẬP PASS ĐI NGƯỜI ĐẸP
   <span class="hint">Gợi ý: snhựt cụa bé 🥰</span>
@@ -46,7 +45,6 @@
 <!-- 🔐 LOCK 2 -->
 <div id="lock-screen-2" style="display:none;">
   <div class="lock-wrapper">
-    <div class="lock-icon">🔒</div>
         <h2>
   NHẬP PASS ĐI NGƯỜI ĐẸP
   <span class="hint">Gợi ý: snhựt cụa anh 😎</span>
@@ -79,7 +77,6 @@
 <!-- 🔐 LOCK 3 -->
 <div id="lock-screen-3" style="display:none;">
   <div class="lock-wrapper">
-    <div class="lock-icon">🔒</div>
     <h2>
   NHẬP PASS ĐI NGƯỜI ĐẸP
   <span class="hint">Gợi ý: Tgian a đồng ý làm ny e🙄</span>
@@ -108,10 +105,15 @@
     <button class="submit-btn" onclick="checkPass()">✔</button>
   </div>
 </div>
-
+  
 <!-- 📖 Album -->
 <div class="book" id="book" style="display:none;"></div>
 
+<!-- 🔓 BIG LOCK OVERLAY -->
+<div id="unlock-overlay">
+  <div class="big-lock">🔒</div>
+</div>
+  
 <audio id="sound" loop>
   <source src="./style/KhoBau.mp3" type="audio/mpeg" />
 </audio>
@@ -121,6 +123,7 @@
 
 </body>
 </html>
+
 
 
 
