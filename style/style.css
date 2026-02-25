@@ -18,6 +18,14 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.author {
+  font-size: clamp(22px, 5vw, 34px);
+  margin-top: 15px;
+  color: #333;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
 
 .page {
   width: 100%;
@@ -247,6 +255,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
