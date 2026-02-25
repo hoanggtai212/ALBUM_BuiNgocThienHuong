@@ -184,7 +184,7 @@ body {
 
 .lock-wrapper h2 span {
   display: block;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 /* Tiêu đề */
@@ -283,6 +283,7 @@ body {
 .submit-btn:active {
   transform: scale(0.92);
 }
+
 
 
 
