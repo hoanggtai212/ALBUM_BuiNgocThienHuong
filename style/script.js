@@ -169,9 +169,9 @@ pages.forEach((page) => {
           Mặt trời (the Sun) ☀️, 
           Mặt trăng (the Moon)🌕,
           Và em (the Exception) ❤️. 
-          Mặt trời là 
+          Mặt trời là ...
           Ánh sáng của ban mai 🌅,
-          Mặt trăng là 
+          Mặt trăng là ...
           Vẻ đẹp của màn đêm 🌌,
           Còn e là 🤔 ... 
           Là đệ cụa toi 😎
@@ -212,6 +212,7 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
 
