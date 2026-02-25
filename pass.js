@@ -30,6 +30,8 @@ function checkPass() {
 
     const overlay = document.getElementById("unlock-overlay");
     const bigLock = overlay.querySelector(".big-lock");
+    const front = bigLock.querySelector(".front");
+    const back = bigLock.querySelector(".back");
 
     overlay.style.display = "flex";
 
@@ -37,34 +39,29 @@ function checkPass() {
     bigLock.classList.remove("spin", "open");
     void bigLock.offsetWidth;
 
-    // 1️⃣ Quay (vẫn là 🔒)
+    // đảm bảo bắt đầu là 🔒
+    if (front) front.textContent = "🔒";
+    if (back) back.textContent = "🔒";
+
+    // ===== 1️⃣ Quay =====
     bigLock.classList.add("spin");
 
-    // 2️⃣ Sau khi quay xong → bung to
+    // ===== 2️⃣ Bung to =====
     setTimeout(() => {
       bigLock.classList.add("open");
     }, 2000);
 
-    // 3️⃣ Sau khi bung → đổi thành 🔓
+    // ===== 3️⃣ Sau khi bung xong mới đổi thành 🔓 =====
     setTimeout(() => {
-      const front = bigLock.querySelector(".front");
-      const back = bigLock.querySelector(".back");
-
       if (front) front.textContent = "🔓";
       if (back) back.textContent = "🔓";
     }, 2400);
 
-    // 4️⃣ Ẩn overlay & chuyển màn
+    // ===== 4️⃣ Ẩn overlay & chuyển màn =====
     setTimeout(() => {
 
       overlay.style.display = "none";
       bigLock.classList.remove("spin", "open");
-
-      // reset lại thành 🔒 cho lần sau
-      const front = bigLock.querySelector(".front");
-      const back = bigLock.querySelector(".back");
-      if (front) front.textContent = "🔒";
-      if (back) back.textContent = "🔒";
 
       currentScreen.style.display = "none";
 
