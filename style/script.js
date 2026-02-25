@@ -25,7 +25,6 @@ introFront.innerHTML = `
   </div>
 `;
 
-
 const introBack = document.createElement('div');
 introBack.className = 'back';
 
@@ -175,7 +174,7 @@ pages.forEach((page) => {
           Còn em là 🤔 ... 
           Là đệ cụa toi 😎
           Ý nhầm, còn e là 🤔 ... 
-          Là điều ngọt ngào nhất của a 😘`;
+          Là điều ngọt ngào nhất của toi 😘`;
         endText.innerHTML = "";
         typewriterEffect(content, endText);
 
@@ -211,5 +210,6 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
