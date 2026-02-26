@@ -64,7 +64,7 @@ body {
 }
 
 .page.flipped {
-  transform: rotateY(-180deg) rotateX(3deg);
+  transform: rotateY(-180deg) rotateX(1deg);
 }
 
 .intro-content, .end-content {
@@ -386,5 +386,6 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
