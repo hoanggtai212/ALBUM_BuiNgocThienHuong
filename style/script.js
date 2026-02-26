@@ -182,7 +182,8 @@ pages.forEach((page) => {
           Còn e là 🤔 ... 
           Là đệ cụa toi 😎
           Ý nhầm, còn e là 🤔 ... 
-          Là đìu ngọt ngào nhứt của a 😘`;
+          Là đìu ngọt ngào nhứt của a 😘
+          { Hết }`;
         endText.innerHTML = "";
         typewriterEffect(content, endText);
 
@@ -218,4 +219,5 @@ pages.forEach((page) => {
   });
 
 });
+
 
