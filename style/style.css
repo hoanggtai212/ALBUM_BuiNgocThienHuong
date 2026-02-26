@@ -4,7 +4,6 @@
   user-select: none;
   cursor: auto;
   box-sizing: border-box;
-  
 }
 
 html, body {
@@ -419,5 +418,6 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
