@@ -6,11 +6,11 @@ const sound = document.getElementById("sound");
 document.addEventListener("click", () => {
   if (sound.paused) {
     sound.currentTime = 0;
-      sound.addEventListener("pause", () => {
-      setTimeout(() => {
-      sound.play().catch(() => {});
-      }, 500);
-   });
+   // sound.addEventListener("pause", () => {
+   // setTimeout(() => {
+   // sound.play().catch(() => {});
+   //  }, 500); 
+   //  });
     sound.play().catch(err => console.log("Không phát được nhạc:", err));
   }
 }, { once: true });
@@ -26,7 +26,7 @@ introFront.className = 'front';
 introFront.innerHTML = `
   <div class="intro-content">
     <h1>Memory Album</h1>
-    <div class="author"><em>Kiên Thị Nọc Hân 😍</em></div>
+    <div class="author"><em>Bùi Ngọc Thiên Hương 😍</em></div>
     <div>🎁❤️🎁</div>
   </div>
 `;
@@ -40,33 +40,31 @@ book.appendChild(introPage);
 pages.push(introPage);
 
 const images = [];
-for (let i = 1; i <= 22; i++) { //Chỉnh số lượng ảnh ở đây
+for (let i = 1; i <= 20; i++) { //Chỉnh số lượng ảnh ở đây
   images.push(`./style/image/Anh (${i}).jpg`);
 }
 
 const dates = [
-  "01-06-2025",
-  "01-06-2025",
-  "06-06-2025",
-  "06-06-2025",
-  "19-06-2025",
-  "19-06-2025",
-  "19-06-2025",
-  "30-06-2025",
-  "03-07-2025",
-  "10-07-2025",
-  "18-07-2025",
-  "18-07-2025",
-  "29-07-2025",
-  "30-07-2025",
-  "30-07-2025",
-  "04-08-2025",
-  "04-08-2025",
-  "10-08-2025",
-  "10-08-2025",
-  "10-08-2025",
-  "16-08-2025",
-  "24-09-2025",
+  "11-02-2026",
+  "12-02-2026",
+  "12-02-2026",
+  "12-02-2026",
+  "13-02-2026",
+  "13-02-2026",
+  "14-02-2026",
+  "14-02-2026",
+  "14-02-2026",
+  "14-02-2026",
+  "15-02-2026",
+  "16-02-2026",
+  "16-02-2026",
+  "16-02-2026",
+  "16-02-2026",
+  "17-02-2026",
+  "17-02-2026",
+  "17-02-2026",
+  "24-02-2026",
+  "24-02-2026"
 ];
 
 for (let i = 0; i < images.length; i++) {
@@ -169,13 +167,13 @@ pages.forEach((page) => {
   const back = page.querySelector('.back');
 
 const flipForward = () => {
-  if (isFlipping) return; // nếu đang lật thì chặn
+  if (isFlipping) return;
   if (!page.classList.contains('flipped')) {
 
-    isFlipping = true; // khóa lại
+    isFlipping = true;
 
-    page.classList.add('flipping');
-    page.classList.add('flipped');
+    // chạy animation nghiêng
+    page.classList.add('flipping-forward');
 
     if (page === pages[pages.length - 2] && !typed) {
       const endText = document.getElementById('ending-text');
@@ -198,11 +196,12 @@ const flipForward = () => {
     }
 
     setTimeout(() => {
-      page.classList.remove('flipping');
+      page.classList.remove('flipping-forward'); // bỏ animation
+      page.classList.add('flipped');             // giữ trạng thái 180°
       currentTopZ++;
       page.style.zIndex = currentTopZ;
-      isFlipping = false; // mở khóa sau khi lật xong
-    }, 1000); // 1000 phải bằng thời gian animation CSS
+      isFlipping = false;
+    }, 1200);
   }
 };
 
@@ -211,15 +210,16 @@ const flipBackward = () => {
   if (page.classList.contains('flipped')) {
 
     isFlipping = true;
-    page.classList.add('flipping');
-    page.classList.remove('flipped');
+
+    page.classList.add('flipping-backward');
 
     setTimeout(() => {
-      page.classList.remove('flipping');
+      page.classList.remove('flipping-backward');
+      page.classList.remove('flipped');
       currentTopZ++;
       page.style.zIndex = currentTopZ;
       isFlipping = false;
-    }, 1000);
+    }, 1200);
   }
 };
 
@@ -247,29 +247,435 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-// 🔥 Chặn vuốt quay lại trang trước trên iOS
-window.history.pushState(null, null, window.location.href);
 
-window.addEventListener("popstate", function () {
-  window.history.pushState(null, null, window.location.href);
-});
 
-// 🔒 Chặn vuốt mép trái (iOS edge swipe)
 
-document.addEventListener("touchstart", function (e) {
-  if (e.touches[0].clientX < 20) {
-    e.preventDefault();
-  }
-}, { passive: false });
 
-// 🔒 CHẶN BACK TOÀN BỘ (mọi trình duyệt, mọi điện thoại)
 
-function lockBackNavigation() {
-  history.pushState(null, null, location.href);
+
+
+
+
+css*{
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  cursor: auto;
+  box-sizing: border-box;
+  
 }
 
-lockBackNavigation();
+html, body {
+  height: 100%;
+  overflow: hidden;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
 
-window.addEventListener("popstate", function () {
-  lockBackNavigation();
-});
+body {
+  margin: 0;
+  background: #ffeaf6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.author {
+  font-size: clamp(22px, 5vw, 34px);
+  margin-top: 15px;
+  color: #333;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  backface-visibility: hidden;
+  transform-origin: left;
+  cursor: pointer;
+  border: 3px solid #888;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background: white;
+}
+
+.page .front img,
+.page .back img {
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+  border: 2px solid #444;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.page .back {
+  transform: rotateY(180deg);
+}
+
+.page .back .photo-date {
+  transform: rotateY(180deg);
+  text-align: center;
+  backface-visibility: hidden;
+}
+
+.page.flipping-forward {
+  animation: flipWithTilt 1.2s ease-in-out forwards;
+}
+
+.page.flipping-backward {
+  animation: flipBackWithTilt 1.2s ease-in-out forwards;
+}
+
+@keyframes flipBackWithTilt {
+  0% {
+    transform: rotateY(-180deg) rotateX(0deg);
+  }
+  40% {
+    transform: rotateY(-90deg) rotateX(4deg);
+  }
+  100% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+}
+
+.page.flipped {
+  transform: rotateY(-180deg) rotateX(0deg);
+}
+
+@keyframes flipWithTilt {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  40% {
+    transform: rotateY(-90deg) rotateX(4deg); /* 👈 nghiêng nhẹ ở giữa */
+  }
+  100% {
+    transform: rotateY(-180deg) rotateX(0deg); /* 👈 về thẳng lại */
+  }
+}
+
+.intro-content, .end-content {
+  text-align: center;
+  border: 3px solid black;
+  padding: 10px;
+  border-radius: 15%;
+}
+
+.intro-content h1 {
+  font-size: clamp(40px, 10vw, 70px);
+  color: #fb18c2;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 10px rgba(251, 24, 194, 0.3);
+}
+
+.intro-content p {
+  font-size: clamp(22px, 6vw, 32px);
+  line-height: 1.8;
+  color: #555;
+  line-height: 1.6;
+}
+
+.intro-content,.end-content {
+  background: linear-gradient(135deg, #f5f7fa, #e0e4e8);
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-content h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(20px, 5vw, 24px);
+  margin-bottom: 14px;
+  color: #333;
+}
+
+.end-content span {
+  font-size: clamp(14px, 3.8vw, 17px);
+  color: #444;
+  line-height: 1.6;
+}
+
+.caption {
+  margin-top: 18px;
+  font-size: 20px;
+  color: #555;
+  text-align: center;
+  z-index: 10;
+  flex-shrink: 0;
+}
+  
+.page .front,
+.page .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.book {
+  position: absolute;
+  perspective-origin: left center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(85vw, 750px);  /* giảm vw xuống */
+  aspect-ratio: 3 / 4;  /* giữ tỉ lệ đẹp */
+  perspective: 2000px;
+  z-index: 1;
+}
+
+/* ===== LOCK SCREEN STYLE FINAL ===== */
+
+#lock-screen-1,
+#lock-screen-2,
+#lock-screen-3 {
+  position: fixed;
+  inset: 0;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3d6dc;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.lock-wrapper {
+  width: 100%;
+  max-width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;   /* 👈 thêm dòng này */
+}
+
+.lock-wrapper h2 {
+  text-align: center;
+  line-height: 1.4;
+  height: 110px;      /* 👈 đổi thành height cố định */
+}
+
+.lock-wrapper h2 span {
+  display: block;
+  margin-top: 6px;
+}
+
+/* Tiêu đề */
+#lock-screen-1 h2,
+#lock-screen-2 h2,
+#lock-screen-3 h2 {
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #e75480;
+  margin-bottom: 8px;
+}
+
+/* Ô nhập pass */
+.password-input {
+  width: 100%;
+  height: 42px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 14px;
+  text-align: center;
+  background: #eeeeee;
+}
+
+/* Keypad */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 280px;  /* 👈 thêm dòng này */
+}
+
+/* Nút số */
+.keypad button {
+  width: 100%;
+  aspect-ratio: 1 / 1;  /* 👈 làm thành hình vuông */
+  border-radius: 20px;
+  border: none;
+  background: #f9f9f9;
+  color: #444;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.08),
+    inset 0 -2px 4px rgba(0,0,0,0.04);
+
+  transition: all 0.2s ease;
+}
+
+.keypad button:active {
+  transform: scale(0.93);
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.12),
+    inset 0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* Nút X */
+.keypad .delete {
+  background: linear-gradient(135deg, #ff6b9a, #e75480);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 8px 18px rgba(231,84,128,0.4);
+}
+
+/* Nút xác nhận */
+.submit-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #ff6b9a, #e75480);
+  color: white;
+  font-size: 24px;
+  box-shadow: 0 10px 25px rgba(231,84,128,0.45);
+}
+
+.submit-btn:active {
+  transform: scale(0.92);
+}
+
+/* ===== INPUT STYLE ===== */
+input {
+  transition: all 0.3s ease;
+}
+
+.input-error {
+  border: 2px solid #ff4d4d;
+  background: #ffe5e5;
+}
+
+.input-success {
+  border: 2px solid #4CAF50;
+  background: #e8fbe8;
+}
+
+/* ===== SHAKE ===== */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+/* ===== BIG UNLOCK OVERLAY ===== */
+
+#unlock-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 20000;
+
+  perspective: 1500px;   /* 👈 THÊM DÒNG NÀY */
+}
+
+.big-lock {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.big-lock .front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+
+  transform: rotateY(0deg) translateZ(2px); /* 👈 thêm dòng này */
+}
+
+.big-lock .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+
+  transform: rotateY(180deg) translateZ(2px); /* 👈 thêm translateZ */
+}
+
+/* Xoay ổ khóa */
+@keyframes lockSpin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(1800deg); /* 5 vòng */
+  }
+}
+
+.spin {
+  animation: lockSpin 2s ease-out forwards;
+}
+
+/* Khi mở */
+.open {
+  animation: popOpen 0.4s ease forwards;
+}
+
+@keyframes popOpen {
+  0% {
+    transform: rotateY(1800deg) scale(1);
+  }
+  60% {
+    transform: rotateY(1800deg) scale(1.6);
+  }
+  100% {
+    transform: rotateY(1800deg) scale(1.3);
+  }
+}
+
