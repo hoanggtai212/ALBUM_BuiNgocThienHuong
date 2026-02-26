@@ -254,3 +254,10 @@ window.addEventListener("popstate", function () {
   window.history.pushState(null, null, window.location.href);
 });
 
+// 🔒 Chặn vuốt mép trái (iOS edge swipe)
+
+document.addEventListener("touchstart", function (e) {
+  if (e.touches[0].clientX < 20) {
+    e.preventDefault();
+  }
+}, { passive: false });
