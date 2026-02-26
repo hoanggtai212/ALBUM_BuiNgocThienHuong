@@ -247,4 +247,10 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
+// 🔥 Chặn vuốt quay lại trang trước trên iOS
+window.history.pushState(null, null, window.location.href);
+
+window.addEventListener("popstate", function () {
+  window.history.pushState(null, null, window.location.href);
+});
 
