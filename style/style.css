@@ -1,4 +1,4 @@
-cái chỗ gáy sách phần dưới nó bị lệch pk nhỉ code css nè:*{
+*{
   margin: 0;
   padding: 0;
   user-select: none;
@@ -630,5 +630,6 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
