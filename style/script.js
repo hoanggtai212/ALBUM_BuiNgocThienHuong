@@ -261,3 +261,15 @@ document.addEventListener("touchstart", function (e) {
     e.preventDefault();
   }
 }, { passive: false });
+
+// 🔒 CHẶN BACK TOÀN BỘ (mọi trình duyệt, mọi điện thoại)
+
+function lockBackNavigation() {
+  history.pushState(null, null, location.href);
+}
+
+lockBackNavigation();
+
+window.addEventListener("popstate", function () {
+  lockBackNavigation();
+});
