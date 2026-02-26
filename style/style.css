@@ -34,13 +34,21 @@ body {
   height: 100%;
   position: absolute;
   transform-style: preserve-3d;
-  transform-origin: left;
+  transform-origin: left center;
   transition: transform 1.0s ease-in-out;
   cursor: pointer;
   border: 3px solid #888;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   background: white;
+}
+
+.page.flipping-forward {
+  transition: transform 0.9s ease-in-out;
+}
+
+.page.flipping-backward {
+  transition: transform 0.45s ease-in-out;
 }
 
 .page .front img,
@@ -64,7 +72,7 @@ body {
 }
 
 .page.flipped {
-  transform: rotateY(-180deg) rotateX(1deg);
+  transform: rotateY(-180deg);
 }
 
 .intro-content, .end-content {
@@ -386,6 +394,7 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
 
