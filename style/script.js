@@ -201,7 +201,7 @@ const flipForward = () => {
       currentTopZ++;
       page.style.zIndex = currentTopZ;
       isFlipping = false;
-    }, 1200);
+    }, 1000);
   }
 };
 
@@ -219,7 +219,7 @@ const flipBackward = () => {
       currentTopZ++;
       page.style.zIndex = currentTopZ;
       isFlipping = false;
-    }, 1200);
+    }, 1000);
   }
 };
 
@@ -246,4 +246,5 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
