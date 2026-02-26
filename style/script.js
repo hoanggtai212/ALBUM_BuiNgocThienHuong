@@ -5,7 +5,7 @@ const sound = document.getElementById("sound");
 
 document.addEventListener("click", () => {
   if (sound.paused) {
-    sound.currentTime = 11;
+    sound.currentTime = 0;
     sound.play().catch(err => console.log("Không phát được nhạc:", err));
   }
 }, { once: true });
@@ -219,5 +219,6 @@ pages.forEach((page) => {
   });
 
 });
+
 
 
