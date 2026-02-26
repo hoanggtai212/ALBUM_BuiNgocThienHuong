@@ -166,14 +166,24 @@ pages.forEach((page) => {
   const front = page.querySelector('.front');
   const back = page.querySelector('.back');
 
-const flipForward = () => {
-  if (isFlipping) return; // nếu đang lật thì chặn
-  if (!page.classList.contains('flipped')) {
+  const flipForward = () => {
+    if (isFlipping || page.classList.contains('flipped')) return;
 
-    isFlipping = true; // khóa lại
+    isFlipping = true;
 
-    page.classList.add('flipped');
+    page.classList.add('flipping-forward');
 
+    page.addEventListener("animationend", function handler() {
+      page.classList.remove('flipping-forward');
+      page.classList.add('flipped');
+      currentTopZ++;
+      page.style.zIndex = currentTopZ;
+
+      isFlipping = false;
+      page.removeEventListener("animationend", handler);
+    });
+
+    // đoạn typewriter giữ nguyên
     if (page === pages[pages.length - 2] && !typed) {
       const endText = document.getElementById('ending-text');
       const content = `A iu 3 thứ trên thế giới này : 
@@ -193,30 +203,25 @@ const flipForward = () => {
       typewriterEffect(content, endText);
       typed = true;
     }
+  };
 
-    setTimeout(() => {
-      currentTopZ++;
-      page.style.zIndex = currentTopZ;
-      isFlipping = false; // mở khóa sau khi lật xong
-    }, 1200); // 1000 phải bằng thời gian animation CSS
-  }
-};
-
-const flipBackward = () => {
-  if (isFlipping) return;
-  if (page.classList.contains('flipped')) {
+  const flipBackward = () => {
+    if (isFlipping || !page.classList.contains('flipped')) return;
 
     isFlipping = true;
 
-    page.classList.remove('flipped');
+    page.classList.add('flipping-backward');
 
-    setTimeout(() => {
+    page.addEventListener("animationend", function handler() {
+      page.classList.remove('flipping-backward');
+      page.classList.remove('flipped');
       currentTopZ++;
       page.style.zIndex = currentTopZ;
+
       isFlipping = false;
-    }, 1200);
-  }
-};
+      page.removeEventListener("animationend", handler);
+    });
+  };
 
   front.addEventListener('click', flipForward);
   back.addEventListener('click', flipBackward);
@@ -230,7 +235,6 @@ const flipBackward = () => {
     if (diff < -30) flipForward();
     else if (diff > 30) flipBackward();
   });
-
 });
 
 // Khi rời khỏi tab -> pause
@@ -241,6 +245,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
