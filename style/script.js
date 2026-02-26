@@ -173,15 +173,18 @@ pages.forEach((page) => {
 
     page.classList.add('flipping-forward');
 
-    page.addEventListener("animationend", function handler() {
-      page.classList.remove('flipping-forward');
-      page.classList.add('flipped');
-      currentTopZ++;
-      page.style.zIndex = currentTopZ;
+    page.addEventListener("animationend", function handler(e) {
+  if (e.target !== page) return;
 
-      isFlipping = false;
-      page.removeEventListener("animationend", handler);
-    });
+  page.classList.remove('flipping-forward');
+
+  // ÉP transform về đúng 180 ngay lập tức
+  page.style.transform = "rotateY(-180deg)";
+  page.classList.add('flipped');
+
+  isFlipping = false;
+  page.removeEventListener("animationend", handler);
+});
 
     // đoạn typewriter giữ nguyên
     if (page === pages[pages.length - 2] && !typed) {
@@ -212,17 +215,17 @@ pages.forEach((page) => {
 
     page.classList.add('flipping-backward');
 
-    page.addEventListener("animationend", function handler() {
-      page.classList.remove('flipping-backward');
-      page.classList.remove('flipped');
-      currentTopZ++;
-      page.style.zIndex = currentTopZ;
+   page.addEventListener("animationend", function handler(e) {
+  if (e.target !== page) return;
 
-      isFlipping = false;
-      page.removeEventListener("animationend", handler);
-    });
-  };
+  page.classList.remove('flipping-backward');
 
+  page.style.transform = "rotateY(0deg)";
+  page.classList.remove('flipped');
+
+  isFlipping = false;
+  page.removeEventListener("animationend", handler);
+});
   front.addEventListener('click', flipForward);
   back.addEventListener('click', flipBackward);
 
@@ -245,6 +248,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
