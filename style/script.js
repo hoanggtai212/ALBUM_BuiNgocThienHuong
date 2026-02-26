@@ -10,7 +10,7 @@ document.addEventListener("click", () => {
    // setTimeout(() => {
    // sound.play().catch(() => {});
    //  }, 500); 
-  //  });
+   //  });
     sound.play().catch(err => console.log("Không phát được nhạc:", err));
   }
 }, { once: true });
@@ -241,6 +241,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
