@@ -166,14 +166,9 @@ pages.forEach((page) => {
   const back = page.querySelector('.back');
 
 const flipForward = () => {
-  if (isFlipping) return;
   if (!page.classList.contains('flipped')) {
 
-    isFlipping = true;
-
-    // chạy animation nghiêng
-    page.classList.add('flipping-forward');
-
+    // Nếu là trang gần cuối thì chạy typewriter
     if (page === pages[pages.length - 2] && !typed) {
       const endText = document.getElementById('ending-text');
       const content = `A iu 3 thứ trên thế giới này : 
@@ -194,31 +189,22 @@ const flipForward = () => {
       typed = true;
     }
 
-    setTimeout(() => {
-      page.classList.remove('flipping-forward'); // bỏ animation
-      page.classList.add('flipped');             // giữ trạng thái 180°
-      currentTopZ++;
-      page.style.zIndex = currentTopZ;
-      isFlipping = false;
-    }, 900);
+    page.classList.remove('fast');   // tốc độ chậm
+    page.classList.add('flipped');   // LẬT NGAY
+
+    currentTopZ++;
+    page.style.zIndex = currentTopZ;
   }
 };
 
 const flipBackward = () => {
-  if (isFlipping) return;
   if (page.classList.contains('flipped')) {
 
-    isFlipping = true;
+    page.classList.add('fast');      // dùng tốc độ nhanh
+    page.classList.remove('flipped'); // lật ngay
 
-    page.classList.add('flipping-backward');
-
-    setTimeout(() => {
-      page.classList.remove('flipping-backward');
-      page.classList.remove('flipped');
-      currentTopZ++;
-      page.style.zIndex = currentTopZ;
-      isFlipping = false;
-    }, 450);
+    currentTopZ++;
+    page.style.zIndex = currentTopZ;
   }
 };
 
@@ -245,6 +231,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
