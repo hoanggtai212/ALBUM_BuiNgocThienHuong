@@ -15,7 +15,6 @@ document.addEventListener("click", () => {
   }
 }, { once: true });
 
-
 const introPage = document.createElement('div');
 introPage.className = 'page';
 introPage.dataset.originalZ = 100;
@@ -248,6 +247,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
