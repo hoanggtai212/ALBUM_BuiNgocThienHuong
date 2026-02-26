@@ -9,12 +9,7 @@ document.addEventListener("click", () => {
     sound.play().catch(err => console.log("Không phát được nhạc:", err));
   }
 }, { once: true });
-// Nếu nhạc bị pause do thông báo hoặc hệ thống
-sound.addEventListener("pause", () => {
-  setTimeout(() => {
-    sound.play().catch(() => {});
-  }, 500);
-});
+
 
 const introPage = document.createElement('div');
 introPage.className = 'page';
@@ -228,6 +223,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
