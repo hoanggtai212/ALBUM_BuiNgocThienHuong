@@ -33,6 +33,7 @@ body {
   height: 100%;
   position: absolute;
   will-change: transform;
+  transition: box-shadow 0.6s ease;
   transform-style: preserve-3d;
   transform-origin: left center;
   cursor: pointer;
@@ -41,6 +42,67 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   background: white;
 }
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+
+  background: radial-gradient(
+    ellipse at 75% center,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.35) 30%,
+    rgba(0,0,0,0.15) 55%,
+    transparent 70%
+  );
+}
+
+.page.flipping-forward::before,
+.page.flipping-backward::before {
+  animation: curveShadow 1.2s ease-in-out forwards;
+}
+
+@keyframes curveShadow {
+  0% { opacity: 0; }
+  30% { opacity: 0.6; }
+  50% { opacity: 1; }
+  70% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+.page.flipping-forward::after,
+.page.flipping-backward::after {
+  animation: edgeLight 1.2s ease-in-out forwards;
+}
+
+@keyframes edgeLight {
+  0% { opacity: 0; }
+  40% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+
+  background: linear-gradient(
+    to left,
+    rgba(255,255,255,0.8),
+    rgba(255,255,255,0.3),
+    transparent
+  );
+}
+
 
 .page .front img,
 .page .back img {
@@ -63,68 +125,49 @@ body {
 }
 
 .page.flipping-forward {
-  animation: flipWithCurve 1.2s ease-in-out;
+  animation: flipForward 1.2s cubic-bezier(.65,.05,.36,1) forwards;
 }
 
 .page.flipping-backward {
-  animation: flipBackWithCurve 1.2s ease-in-out;
+  animation: flipBackward 1.2s cubic-bezier(.65,.05,.36,1) forwards;
 }
 
-
-@keyframes flipWithCurve {
-
+@keyframes flipForward {
   0% {
-    transform: rotateY(0deg) scaleX(1);
-  }
-
-  20% {
-    transform: rotateY(-30deg) skewY(-2deg) scaleX(1.03);
+    transform: rotateY(0deg);
   }
 
   40% {
-    transform: rotateY(-75deg) skewY(-4deg) scaleX(1.08);
+    transform: rotateY(-80deg);
   }
 
   60% {
-    transform: rotateY(-120deg) skewY(-3deg) scaleX(1.06);
-  }
-
-  80% {
-    transform: rotateY(-160deg) skewY(-1deg) scaleX(1.02);
+    transform: rotateY(-100deg);
   }
 
   100% {
-    transform: rotateY(-180deg) scaleX(1);
+    transform: rotateY(-180deg);
   }
 }
 
-
-@keyframes flipBackWithCurve {
-
+@keyframes flipBackward {
   0% {
-    transform: rotateY(-180deg) scaleX(1);
-  }
-
-  20% {
-    transform: rotateY(-150deg) skewY(2deg) scaleX(1.03);
+    transform: rotateY(-180deg);
   }
 
   40% {
-    transform: rotateY(-100deg) skewY(4deg) scaleX(1.08);
+    transform: rotateY(-100deg);
   }
 
   60% {
-    transform: rotateY(-60deg) skewY(3deg) scaleX(1.06);
-  }
-
-  80% {
-    transform: rotateY(-20deg) skewY(1deg) scaleX(1.02);
+    transform: rotateY(-80deg);
   }
 
   100% {
-    transform: rotateY(0deg) scaleX(1);
+    transform: rotateY(0deg);
   }
 }
+
 
 .intro-content, .end-content {
   text-align: center;
@@ -446,6 +489,7 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
 
