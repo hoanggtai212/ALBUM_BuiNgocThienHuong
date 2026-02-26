@@ -220,5 +220,14 @@ pages.forEach((page) => {
 
 });
 
+// Khi rời khỏi tab -> pause
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    sound.pause();
+  } else {
+    sound.play().catch(() => {});
+  }
+});
+
 
 
