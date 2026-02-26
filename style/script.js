@@ -160,7 +160,7 @@ let currentTopZ = 200;
 let typed = false;
 let isFlipping = false; // thêm dòng này
 
-pages.forEach((page) => {
+pages.forEach((page, index) => {
   let startX = 0;
   const front = page.querySelector('.front');
   const back = page.querySelector('.back');
@@ -169,65 +169,63 @@ pages.forEach((page) => {
     if (isFlipping || page.classList.contains('flipped')) return;
 
     isFlipping = true;
-
     page.classList.add('flipping-forward');
 
     page.addEventListener("animationend", function handler(e) {
-  if (e.target !== page) return;
+      if (e.target !== page) return;
 
-  page.classList.remove('flipping-forward');
+      page.classList.remove('flipping-forward');
+      page.style.transform = "rotateY(-180deg)";
+      page.classList.add('flipped');
 
-  // ÉP transform về đúng 180 ngay lập tức
-  page.style.transform = "rotateY(-180deg)";
-  page.classList.add('flipped');
+      // 🎯 Trang gần cuối thì chạy typewriter
+      if (index === pages.length - 2 && !typed) {
+        const endText = document.getElementById('ending-text');
+        const content = `A iu 3 thứ trên thế giới này :
+Mặt trời (the Sun) ☀️,
+Mặt trăng (the Moon) 🌕,
+Và em (the Exception) ❤️.
+Mặt trời là ...
+Ánh sáng của ban mai 🌅,
+Mặt trăng là ...
+Vẻ đẹp của màn đêm 🌌,
+Còn em là 🤔 ...
+Là điều ngọt ngào nhất của anh 😘
+{ Hết }`;
 
-  isFlipping = false;
-  page.removeEventListener("animationend", handler);
-});
+        endText.innerHTML = "";
+        typewriterEffect(content, endText);
+        typed = true;
+      }
 
-    // đoạn typewriter giữ nguyên
-    if (page === pages[pages.length - 2] && !typed) {
-      const endText = document.getElementById('ending-text');
-      const content = `A iu 3 thứ trên thế giới này : 
-        Mặt trời (the Sun) ☀️, 
-        Mặt trăg (the Moon)🌕,
-        Và em (the Exception) ❤️. 
-        Mặt trời là ...
-        Ánh ság của ban mai 🌅,
-        Mặt trăg là ...
-        Vẻ đẹp của màn đêm 🌌,
-        Còn e là 🤔 ... 
-        Là đệ cụa toi 😎
-        Ý nhầm, còn e là 🤔 ... 
-        Là đìu ngọt ngào nhứt của a 😘
-        { Hết }`;
-      endText.innerHTML = "";
-      typewriterEffect(content, endText);
-      typed = true;
-    }
+      isFlipping = false;
+      page.removeEventListener("animationend", handler);
+    });
   };
 
   const flipBackward = () => {
     if (isFlipping || !page.classList.contains('flipped')) return;
 
     isFlipping = true;
-
     page.classList.add('flipping-backward');
 
-   page.addEventListener("animationend", function handler(e) {
-  if (e.target !== page) return;
+    page.addEventListener("animationend", function handler(e) {
+      if (e.target !== page) return;
 
-  page.classList.remove('flipping-backward');
+      page.classList.remove('flipping-backward');
+      page.style.transform = "rotateY(0deg)";
+      page.classList.remove('flipped');
 
-  page.style.transform = "rotateY(0deg)";
-  page.classList.remove('flipped');
+      isFlipping = false;
+      page.removeEventListener("animationend", handler);
+    });
+  };
 
-  isFlipping = false;
-  page.removeEventListener("animationend", handler);
-});
+  // Click
   front.addEventListener('click', flipForward);
   back.addEventListener('click', flipBackward);
 
+  // Vuốt mobile
   page.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
   });
@@ -247,6 +245,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
