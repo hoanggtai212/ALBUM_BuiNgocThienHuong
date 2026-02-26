@@ -35,7 +35,7 @@ body {
   position: absolute;
   transform-style: preserve-3d;
   transform-origin: left center;
-  transition: transform 1.0s ease-in-out;
+  transition: transform 0.9s ease-in-out;
   cursor: pointer;
   border: 3px solid #888;
   border-radius: 10px;
@@ -43,12 +43,8 @@ body {
   background: white;
 }
 
-.page.flipping-forward {
-  transition: transform 0.9s ease-in-out;
-}
-
-.page.flipping-backward {
-  transition: transform 0.45s ease-in-out;
+.page.fast {
+  transition: transform 0.45s ease-in-out; /* lật ngược nhanh */
 }
 
 .page .front img,
@@ -394,6 +390,7 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
 
