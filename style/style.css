@@ -33,7 +33,6 @@ body {
   height: 100%;
   position: absolute;
   transform-style: preserve-3d;
-  backface-visibility: hidden;
   transform-origin: left;
   cursor: pointer;
   border: 3px solid #888;
@@ -70,31 +69,49 @@ body {
   animation: flipBackWithTilt 1.2s ease-in-out forwards;
 }
 
+
 @keyframes flipBackWithTilt {
   0% {
-    transform: rotateY(-180deg) rotateX(0deg);
+    transform: rotateY(-180deg) rotateX(0deg) skewY(0deg) scaleX(1);
   }
-  40% {
-    transform: rotateY(-90deg) rotateX(4deg);
+
+  30% {
+    transform: rotateY(-150deg) rotateX(6deg) skewY(6deg) scaleX(0.95);
   }
+
+  50% {
+    transform: rotateY(-90deg) rotateX(8deg) skewY(8deg) scaleX(0.9);
+  }
+
+  70% {
+    transform: rotateY(-40deg) rotateX(4deg) skewY(4deg) scaleX(0.96);
+  }
+
   100% {
-    transform: rotateY(0deg) rotateX(0deg);
+    transform: rotateY(0deg) rotateX(0deg) skewY(0deg) scaleX(1);
   }
 }
 
-.page.flipped {
-  transform: rotateY(-180deg) rotateX(0deg);
-}
 
 @keyframes flipWithTilt {
   0% {
-    transform: rotateY(0deg) rotateX(0deg);
+    transform: rotateY(0deg) rotateX(0deg) skewY(0deg) scaleX(1);
   }
-  40% {
-    transform: rotateY(-90deg) rotateX(4deg); /* 👈 nghiêng nhẹ ở giữa */
+
+  30% {
+    transform: rotateY(-60deg) rotateX(6deg) skewY(-6deg) scaleX(0.95);
   }
+
+  50% {
+    transform: rotateY(-100deg) rotateX(8deg) skewY(-8deg) scaleX(0.9);
+  }
+
+  70% {
+    transform: rotateY(-150deg) rotateX(4deg) skewY(-4deg) scaleX(0.96);
+  }
+
   100% {
-    transform: rotateY(-180deg) rotateX(0deg); /* 👈 về thẳng lại */
+    transform: rotateY(-180deg) rotateX(0deg) skewY(0deg) scaleX(1);
   }
 }
 
@@ -418,6 +435,7 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
 
