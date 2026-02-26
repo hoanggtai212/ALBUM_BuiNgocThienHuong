@@ -154,51 +154,64 @@ function typewriterEffect(text, element) {
 
 let currentTopZ = 200;
 let typed = false;
+let isFlipping = false; // thêm dòng này
 
 pages.forEach((page) => {
   let startX = 0;
   const front = page.querySelector('.front');
   const back = page.querySelector('.back');
 
-  const flipForward = () => {
-    if (!page.classList.contains('flipped')) {
-      page.classList.add('flipped');
+const flipForward = () => {
+  if (isFlipping) return; // nếu đang lật thì chặn
+  if (!page.classList.contains('flipped')) {
 
-      if (page === pages[pages.length - 2] && !typed) {
-        const endText = document.getElementById('ending-text');
-        const content = `A iu 3 thứ trên thế giới này : 
-          Mặt trời (the Sun) ☀️, 
-          Mặt trăg (the Moon)🌕,
-          Và em (the Exception) ❤️. 
-          Mặt trời là ...
-          Ánh ság của ban mai 🌅,
-          Mặt trăg là ...
-          Vẻ đẹp của màn đêm 🌌,
-          Còn e là 🤔 ... 
-          Là đệ cụa toi 😎
-          Ý nhầm, còn e là 🤔 ... 
-          Là đìu ngọt ngào nhứt của a 😘
-          { Hết }`;
-        endText.innerHTML = "";
-        typewriterEffect(content, endText);
+    isFlipping = true; // khóa lại
 
-        typed = true;
-      }
+    page.classList.add('flipped');
 
-      setTimeout(() => {
-  currentTopZ++;
-  page.style.zIndex = currentTopZ;
-}, 1000);
+    if (page === pages[pages.length - 2] && !typed) {
+      const endText = document.getElementById('ending-text');
+      const content = `A iu 3 thứ trên thế giới này : 
+        Mặt trời (the Sun) ☀️, 
+        Mặt trăg (the Moon)🌕,
+        Và em (the Exception) ❤️. 
+        Mặt trời là ...
+        Ánh ság của ban mai 🌅,
+        Mặt trăg là ...
+        Vẻ đẹp của màn đêm 🌌,
+        Còn e là 🤔 ... 
+        Là đệ cụa toi 😎
+        Ý nhầm, còn e là 🤔 ... 
+        Là đìu ngọt ngào nhứt của a 😘
+        { Hết }`;
+      endText.innerHTML = "";
+      typewriterEffect(content, endText);
+      typed = true;
     }
-  };
 
-  const flipBackward = () => {
-    if (page.classList.contains('flipped')) {
-      page.classList.remove('flipped');
+    setTimeout(() => {
       currentTopZ++;
       page.style.zIndex = currentTopZ;
-    }
-  };
+      isFlipping = false; // mở khóa sau khi lật xong
+    }, 1000); // 1000 phải bằng thời gian animation CSS
+  }
+};
+
+const flipBackward = () => {
+  if (isFlipping) return;
+  if (page.classList.contains('flipped')) {
+
+    isFlipping = true;
+
+    page.classList.remove('flipped');
+
+    setTimeout(() => {
+      currentTopZ++;
+      page.style.zIndex = currentTopZ;
+      isFlipping = false;
+    }, 1000);
+  }
+};
 
   front.addEventListener('click', flipForward);
   back.addEventListener('click', flipBackward);
@@ -223,6 +236,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
