@@ -106,4 +106,3 @@ window.addEventListener("load", () => {
 
   overlay.style.display = "none";
 });
-
