@@ -337,8 +337,8 @@ document.querySelectorAll('.keypad button').forEach(btn => {
   btn.addEventListener('pointerdown', (e) => {
     e.preventDefault(); // 🔥 cực quan trọng cho Zalo/Mess
     btn.classList.add('pressed');
-    const x = e.touches ? e.touches[0].pageX : e.pageX;
-    const y = e.touches ? e.touches[0].pageY : e.pageY;
+    const x = e.pageX;
+    const y = e.pageY;
 
     createHeart(x, y);
     
@@ -370,6 +370,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
