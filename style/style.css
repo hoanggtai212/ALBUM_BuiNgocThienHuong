@@ -35,7 +35,7 @@ body {
   position: absolute;
   transform-style: preserve-3d;
   transform-origin: left center;
-  transition: transform 1s cubic-bezier(0.9, 0.05, 0.95, 1);
+  transition: transform 1s cubic-bezier(0.05, 0.9, 0.1, 1);
   will-change: transform;
   cursor: pointer;
   border-radius: 12px;
@@ -43,7 +43,8 @@ body {
   background: white;
   box-shadow:
     0 8px 20px rgba(0,0,0,0.15),
-    inset -20px 0 40px rgba(0,0,0,0.06);
+    transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .page::after {
@@ -451,6 +452,7 @@ input {
 button {
   touch-action: manipulation;
 }
+
 
 
 
