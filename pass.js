@@ -33,7 +33,7 @@ function checkPass() {
     const front = bigLock.querySelector(".front");
     const back = bigLock.querySelector(".back");
 
-    overlay.classList.add("show");
+    overlay.style.display = "flex";
 
     // reset trạng thái
     bigLock.classList.remove("spin", "open");
@@ -59,11 +59,8 @@ function checkPass() {
     // ===== 4️⃣ Ẩn overlay & chuyển màn =====
     setTimeout(() => {
 
-      overlay.classList.remove("show");
-
-setTimeout(() => {
-  bigLock.classList.remove("spin", "open");
-}, 400);
+      overlay.style.display = "none";
+      bigLock.classList.remove("spin", "open");
 
       currentScreen.style.display = "none";
 
@@ -106,3 +103,5 @@ window.addEventListener("load", () => {
 
   overlay.style.display = "none";
 });
+
+
