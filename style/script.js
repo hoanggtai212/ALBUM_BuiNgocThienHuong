@@ -23,10 +23,6 @@ preventDoubleTapZoom(bookEl);
 document.querySelectorAll('#lock-screen-1, #lock-screen-2, #lock-screen-3')
   .forEach(screen => preventDoubleTapZoom(screen));
 
-// 👇 DÁN NGAY Ở ĐÂY
-document.addEventListener('gesturestart', function (e) {
-  e.preventDefault();
-});
 
 const book = document.getElementById('book');
 const pages = [];
@@ -189,7 +185,7 @@ function typewriterEffect(text, element) {
 
 let currentTopZ = 200;
 let typed = false;
-let isFlipping = false; // thêm dòng này
+const flippingPages = new WeakSet();
 
 pages.forEach((page) => {
   let startX = 0;
@@ -197,16 +193,17 @@ pages.forEach((page) => {
   const back = page.querySelector('.back');
 
 const flipForward = () => {
-  if (isFlipping) return;   // 🚫 chặn spam
+
+  if (flippingPages.has(page)) return;
 
   if (!page.classList.contains('flipped')) {
 
-    isFlipping = true;      // 🔒 khóa lại
+    flippingPages.add(page);
+
     setTimeout(() => {
-  isFlipping = false;
-}, 1200); // thời gian lật xuôi
-    
-    // Nếu là trang gần cuối thì chạy typewriter
+      flippingPages.delete(page);
+    }, 1200);
+
     if (page === pages[pages.length - 2] && !typed) {
       const endText = document.getElementById('ending-text');
       const content = `A iu 3 thứ trên thế giới này : 
@@ -222,6 +219,7 @@ const flipForward = () => {
         Ý nhầm, còn e là 🤔 ... 
         Là đìu ngọt ngào nhứt của a 😘
         { Hết }`;
+
       endText.innerHTML = "";
       typewriterEffect(content, endText);
       typed = true;
@@ -236,15 +234,17 @@ const flipForward = () => {
 };
 
 const flipBackward = () => {
-  if (isFlipping) return;   // 🚫 chặn spam
+
+  if (flippingPages.has(page)) return;
 
   if (page.classList.contains('flipped')) {
 
-    isFlipping = true;      // 🔒 khóa lại
+    flippingPages.add(page);
+
     setTimeout(() => {
-  isFlipping = false;
-}, 500); // thời gian lật ngược
-    
+      flippingPages.delete(page);
+    }, 500);
+
     page.classList.add('fast');
     page.classList.remove('flipped');
 
@@ -299,6 +299,7 @@ document.querySelectorAll('.keypad button').forEach(btn => {
   });
 
 });
+
 
 
 
