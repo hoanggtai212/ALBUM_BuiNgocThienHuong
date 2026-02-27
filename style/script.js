@@ -342,7 +342,3 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
   });
 });
 
-
-
-
-
