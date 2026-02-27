@@ -539,17 +539,33 @@ button {
   filter: drop-shadow(0 0 8px rgba(255,105,180,0.8));
 }
 
-@keyframes explode {
+.heart-particle {
+  position: fixed;
+  font-size: 18px;
+  pointer-events: none;
+  z-index: 30000;
+
+  transform: translate(-50%, -50%);
+  animation: heartExplode 1.2s ease-out forwards;
+
+  filter: drop-shadow(0 0 8px rgba(255,105,180,0.8));
+}
+
+@keyframes heartExplode {
   0% {
-    transform: translate(0,0) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.5);
     opacity: 1;
   }
 
   100% {
-    transform: translate(var(--x), var(--y)) scale(1.6);
+    transform: translate(
+      calc(-50% + var(--x)),
+      calc(-50% + var(--y))
+    ) scale(1.2);
     opacity: 0;
   }
 }
+
 
 
 
