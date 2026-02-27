@@ -152,70 +152,53 @@ pages.push(endPage);
 
 function createHeart(x, y) {
 
-  const mainHeart = document.createElement("div");
-  mainHeart.className = "heart-main";
-  mainHeart.innerHTML = "💖";
+  // ✨ FLASH NHẸ Ở TÂM
+  const flash = document.createElement("div");
+  flash.style.position = "fixed";
+  flash.style.left = x + "px";
+  flash.style.top = y + "px";
+  flash.style.width = "10px";
+  flash.style.height = "10px";
+  flash.style.borderRadius = "50%";
+  flash.style.background = "white";
+  flash.style.boxShadow = "0 0 30px 15px rgba(255,255,255,0.9)";
+  flash.style.transform = "translate(-50%, -50%)";
+  flash.style.pointerEvents = "none";
+  flash.style.zIndex = 30000;
 
-  mainHeart.style.left = x + "px";
-  mainHeart.style.top = y + "px";
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 120);
 
-  document.body.appendChild(mainHeart);
+  // 💥 NỔ TIM NGAY LẬP TỨC
+  const particleCount = 60;
 
-  mainHeart.addEventListener("animationend", () => {
+  for (let i = 0; i < particleCount; i++) {
 
-    // Lấy vị trí thật của tim khi bay xong (chuẩn 100%)
-    const rect = mainHeart.getBoundingClientRect();
-    const explodeX = rect.left + rect.width / 2;
-    const explodeY = rect.top + rect.height / 2;
+    const particle = document.createElement("div");
+    particle.className = "heart-particle";
+    particle.innerHTML = "💖";
 
-    mainHeart.remove();
+    particle.style.left = x + "px";
+    particle.style.top = y + "px";
 
-    // ✨ FLASH NHẸ Ở TÂM
-    const flash = document.createElement("div");
-    flash.style.position = "fixed";
-    flash.style.left = explodeX + "px";
-    flash.style.top = explodeY + "px";
-    flash.style.width = "10px";
-    flash.style.height = "10px";
-    flash.style.borderRadius = "50%";
-    flash.style.background = "white";
-    flash.style.boxShadow = "0 0 30px 15px rgba(255,255,255,0.9)";
-    flash.style.transform = "translate(-50%, -50%)";
-    flash.style.pointerEvents = "none";
-    flash.style.zIndex = 30000;
+    const t = (Math.PI * 2 * i) / particleCount;
 
-    document.body.appendChild(flash);
-    setTimeout(() => flash.remove(), 120);
+    const heartX = 16 * Math.pow(Math.sin(t), 3);
+    const heartY =
+      13 * Math.cos(t)
+      - 5 * Math.cos(2 * t)
+      - 2 * Math.cos(3 * t)
+      - Math.cos(4 * t);
 
-    // 💥 NỔ MẠNH HƠN
-    const particleCount = 80;
+    const scale = 4; // chỉnh độ to trái tim
 
-for (let i = 0; i < particleCount; i++) {
+    particle.style.setProperty("--x", heartX * scale + "px");
+    particle.style.setProperty("--y", -heartY * scale + "px");
 
-  const particle = document.createElement("div");
-  particle.className = "heart-particle";
-  particle.innerHTML = "💖";
+    document.body.appendChild(particle);
 
-  particle.style.left = explodeX + "px";
-  particle.style.top = explodeY + "px";
-
-  const t = (Math.PI * 2 * i) / particleCount;
-
-  const heartX = 16 * Math.pow(Math.sin(t), 3);
-  const heartY =
-    13 * Math.cos(t)
-    - 5 * Math.cos(2 * t)
-    - 2 * Math.cos(3 * t)
-    - Math.cos(4 * t);
-
-  const scale = 4; // chỉnh độ to trái tim
-
-  particle.style.setProperty("--x", heartX * scale + "px");
-  particle.style.setProperty("--y", -heartY * scale + "px");
-
-  document.body.appendChild(particle);
-
-  setTimeout(() => particle.remove(), 1200);
+    setTimeout(() => particle.remove(), 1200);
+  }
 }
 
   }, { once: true });
@@ -390,6 +373,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
