@@ -469,13 +469,19 @@ button {
 
 @keyframes heartFly {
   0% {
-    transform: translateY(0) scale(1);
+    transform: translate(0, 0) scale(1);
     opacity: 1;
   }
+
+  50% {
+    transform: translate(calc(-15px + 30px * var(--rand)), -60px) scale(1.5);
+  }
+
   100% {
-    transform: translateY(-110px) scale(1.9);
+    transform: translate(calc(-30px + 60px * var(--rand)), -120px) scale(1.8);
     opacity: 0;
   }
 }
+
 
 
