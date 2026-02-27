@@ -284,23 +284,39 @@ document.addEventListener("visibilitychange", () => {
 // Hiệu ứng nhấn nút keypad
 document.querySelectorAll('.keypad button').forEach(btn => {
 
-  btn.addEventListener('touchstart', () => {
+  btn.addEventListener('pointerdown', (e) => {
+    e.preventDefault(); // 🔥 cực quan trọng cho Zalo/Mess
     btn.classList.add('pressed');
+
+    const num = btn.dataset.num;
+
+    if (num !== undefined) {
+      enterNumber(num);
+    }
+
+    if (btn.classList.contains('delete')) {
+      deleteNumber();
+    }
   });
 
-  btn.addEventListener('touchend', () => {
+  btn.addEventListener('pointerup', () => {
     btn.classList.remove('pressed');
   });
 
-  btn.addEventListener('mousedown', () => {
-    btn.classList.add('pressed');
-  });
-
-  btn.addEventListener('mouseup', () => {
+  btn.addEventListener('pointercancel', () => {
     btn.classList.remove('pressed');
   });
 
 });
+
+// Submit
+document.querySelectorAll('.submit-btn').forEach(btn => {
+  btn.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    checkPass();
+  });
+});
+
 
 
 
