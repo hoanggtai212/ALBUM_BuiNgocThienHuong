@@ -152,20 +152,28 @@ book.appendChild(endPage);
 pages.push(endPage);
 
 function createHeart(x, y) {
-  const heart = document.createElement("div");
-  heart.className = "heart-fly";
-  heart.innerText = "💗";
 
-  heart.style.left = x + "px";
-  heart.style.top = y + "px";
+  for (let i = 0; i < 3; i++) {
 
-  heart.style.setProperty("--rand", Math.random());
+    const heart = document.createElement("div");
+    heart.className = "heart-fly";
 
-  document.body.appendChild(heart);
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
 
-  setTimeout(() => {
-    heart.remove();
-  }, 1000);
+    // random lệch trái phải
+    const randomX = (Math.random() - 0.5) * 60;
+    heart.style.setProperty("--x", randomX + "px");
+
+    // cho mỗi tim trễ 1 chút nhìn mượt hơn
+    heart.style.animationDelay = (i * 0.08) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 1200);
+  }
 }
 
 function typewriterEffect(text, element) {
@@ -334,6 +342,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
