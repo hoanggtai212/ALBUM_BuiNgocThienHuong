@@ -339,12 +339,10 @@ document.querySelectorAll('.keypad button').forEach(btn => {
 document.querySelectorAll('.submit-btn').forEach(btn => {
   btn.addEventListener('pointerdown', (e) => {
     e.preventDefault();
-    const rect = btn.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-
-    createHeart(x, y); // 💗 bay từ giữa nút
     checkPass();
   });
 });
+
+
+
 
