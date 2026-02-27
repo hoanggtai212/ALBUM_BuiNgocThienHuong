@@ -561,10 +561,11 @@ button {
     transform: translate(
       calc(-50% + var(--x)),
       calc(-50% + var(--y))
-    ) scale(1.2);
+    ) scale(0.9);
     opacity: 0;
   }
 }
+
 
 
 
