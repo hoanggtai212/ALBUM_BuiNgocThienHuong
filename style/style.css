@@ -277,7 +277,7 @@ animation: glow 2s ease-in-out infinite alternate;
     0 8px 20px rgba(0,0,0,0.08),
     inset 0 -2px 4px rgba(0,0,0,0.04);
 
-  transition: all 0.2s ease;
+  transition: transform 0.12s cubic-bezier(.34,1.6,.64,1);
 }
 
 .keypad button:active {
@@ -554,5 +554,6 @@ button {
     opacity: 0;
   }
 }
+
 
 
