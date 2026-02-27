@@ -363,7 +363,8 @@ input {
   justify-content: center;
   align-items: center;
   z-index: 20000;
-
+  will-change: opacity, transform;
+  transform: translateZ(0);
   perspective: 1500px;   /* 👈 THÊM DÒNG NÀY */
 }
 
@@ -373,6 +374,8 @@ input {
   height: 160px;
   transform-style: preserve-3d;
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .big-lock .front {
@@ -448,4 +451,5 @@ input {
 button {
   touch-action: manipulation;
 }
+
 
