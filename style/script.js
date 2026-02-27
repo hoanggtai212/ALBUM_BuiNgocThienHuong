@@ -156,18 +156,13 @@ function createHeart(x, y) {
   mainHeart.className = "heart-main";
   mainHeart.innerHTML = "💖";
 
-  // Đặt tim đúng vị trí bấm
   mainHeart.style.left = x + "px";
   mainHeart.style.top = y + "px";
 
-  const curve = (Math.random() > 0.5 ? 1 : -1) * (120 + Math.random() * 60);
+  // random cong trái hoặc phải
+  const curve = (Math.random() > 0.5 ? 1 : -1) * (60 + Math.random() * 40);
 
-  // Path bắt đầu từ 0 0 (relative)
-  mainHeart.style.offsetPath = `
-    path("M 0 0
-          Q ${curve/2} -120
-            ${curve} -200")
-  `;
+  mainHeart.style.setProperty("--x", curve + "px");
 
   document.body.appendChild(mainHeart);
 
@@ -176,9 +171,10 @@ function createHeart(x, y) {
     mainHeart.remove();
 
     const explodeX = x + curve;
-    const explodeY = y - 200;
+    const explodeY = y - 220;
 
     for (let i = 0; i < 14; i++) {
+
       const particle = document.createElement("div");
       particle.className = "heart-particle";
       particle.innerHTML = "💗";
@@ -369,6 +365,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
