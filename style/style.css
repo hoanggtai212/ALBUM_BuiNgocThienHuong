@@ -35,9 +35,8 @@ body {
   position: absolute;
   transform-style: preserve-3d;
   transform-origin: left center;
-  transition: transform 1s ease-in-out;
+  transition: transform 1s cubic-bezier(0.8, 0, 0.95, 1);
   will-change: transform;
-  transform: translateZ(0);
   cursor: pointer;
   border-radius: 12px;
   border: 2px solid #bbb;
@@ -437,6 +436,7 @@ input {
       0 0 40px rgba(255,105,180,0.6);
   }
 }
+
 
 
 
