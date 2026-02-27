@@ -156,38 +156,51 @@ function createHeart(x, y) {
   mainHeart.className = "heart-main";
   mainHeart.innerHTML = "💖";
 
-  // random cong trái hoặc phải
-  const curve = (Math.random() > 0.5 ? 1 : -1) * (80 + Math.random() * 40);
-
-  // Tạo đường cong Bezier
-  const path = `
-    M ${x} ${y}
-    Q ${x + curve} ${y - 120}
-      ${x + curve * 0.6} ${y - 220}
-  `;
-
-  mainHeart.style.setProperty("--path", `"${path}"`);
+  mainHeart.style.left = x + "px";
+  mainHeart.style.top = y + "px";
 
   document.body.appendChild(mainHeart);
 
   mainHeart.addEventListener("animationend", () => {
 
-    const explodeX = x + curve * 0.6;
-    const explodeY = y - 220;
+    // Lấy vị trí thật của tim khi bay xong (chuẩn 100%)
+    const rect = mainHeart.getBoundingClientRect();
+    const explodeX = rect.left + rect.width / 2;
+    const explodeY = rect.top + rect.height / 2;
 
     mainHeart.remove();
 
-    for (let i = 0; i < 14; i++) {
+    // ✨ FLASH NHẸ Ở TÂM
+    const flash = document.createElement("div");
+    flash.style.position = "fixed";
+    flash.style.left = explodeX + "px";
+    flash.style.top = explodeY + "px";
+    flash.style.width = "10px";
+    flash.style.height = "10px";
+    flash.style.borderRadius = "50%";
+    flash.style.background = "white";
+    flash.style.boxShadow = "0 0 30px 15px rgba(255,255,255,0.9)";
+    flash.style.transform = "translate(-50%, -50%)";
+    flash.style.pointerEvents = "none";
+    flash.style.zIndex = 30000;
+
+    document.body.appendChild(flash);
+    setTimeout(() => flash.remove(), 120);
+
+    // 💥 NỔ MẠNH HƠN
+    const particleCount = 26;
+
+    for (let i = 0; i < particleCount; i++) {
 
       const particle = document.createElement("div");
       particle.className = "heart-particle";
-      particle.innerHTML = "💗";
+      particle.innerHTML = Math.random() > 0.5 ? "💗" : "💖";
 
       particle.style.left = explodeX + "px";
       particle.style.top = explodeY + "px";
 
-      const angle = Math.random() * Math.PI * 2;
-      const distance = 70 + Math.random() * 60;
+      const angle = (Math.PI * 2 * i) / particleCount;
+      const distance = 90 + Math.random() * 80;
 
       particle.style.setProperty("--x", Math.cos(angle) * distance + "px");
       particle.style.setProperty("--y", Math.sin(angle) * distance + "px");
@@ -369,6 +382,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
