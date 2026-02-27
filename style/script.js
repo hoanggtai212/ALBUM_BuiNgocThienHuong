@@ -3,7 +3,7 @@ const book = document.getElementById('book');
 const pages = [];
 const sound = document.getElementById("sound");
 
-document.addEventListener("click", () => {
+document.body.addEventListener("pointerdown", () => {
   if (sound.paused) {
     sound.currentTime = 0;
    // sound.addEventListener("pause", () => {
@@ -41,6 +41,7 @@ pages.push(introPage);
 const images = [];
 for (let i = 1; i <= 20; i++) { //Chỉnh số lượng ảnh ở đây
   images.push(`./style/image/Anh (${i}).jpg`);
+  
 }
 
 const dates = [
@@ -82,7 +83,8 @@ for (let i = 0; i < images.length; i++) {
   // FRONT = TRANG BÊN PHẢI (có ảnh)
   const img = document.createElement('img');
   img.src = images[i];
-
+  img.loading = "lazy";
+  
   const caption = document.createElement('div');
   caption.className = 'caption';
   caption.innerText = dates[i] || "";
@@ -231,6 +233,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
