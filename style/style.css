@@ -12,6 +12,7 @@ html, body {
   overflow: hidden;
   touch-action: manipulation;
   overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -36,6 +37,8 @@ body {
   transform-style: preserve-3d;
   transform-origin: left center;
   transition: transform 0.9s ease-in-out;
+  will-change: transform;      /* 👈 thêm dòng này */
+  transform: translateZ(0); 
   cursor: pointer;
   border: 3px solid #888;
   border-radius: 10px;
@@ -132,7 +135,7 @@ body {
   height: 100%;
   backface-visibility: hidden;
   overflow: hidden;
-
+  -webkit-backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -390,6 +393,7 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
 
