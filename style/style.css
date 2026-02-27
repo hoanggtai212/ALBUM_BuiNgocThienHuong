@@ -287,6 +287,14 @@ animation: glow 2s ease-in-out infinite alternate;
     inset 0 2px 4px rgba(0,0,0,0.08);
 }
 
+.keypad button.pressed {
+  transform: scale(0.93);
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.12),
+    inset 0 2px 4px rgba(0,0,0,0.08);
+  background: #e0e0e0;
+}
+
 /* Nút X */
 .keypad .delete {
   background: linear-gradient(135deg, #ff6b9a, #e75480);
@@ -440,3 +448,4 @@ input {
 button {
   touch-action: manipulation;
 }
+
