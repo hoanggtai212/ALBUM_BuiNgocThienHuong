@@ -1,4 +1,20 @@
 
+// 🔒 Chặn double tap zoom (mobile)
+let lastTouchEnd = 0;
+
+document.addEventListener('touchend', function (event) {
+  const now = new Date().getTime();
+  if (now - lastTouchEnd <= 300) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, { passive: false });
+
+// 👇 DÁN NGAY Ở ĐÂY
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+});
+
 const book = document.getElementById('book');
 const pages = [];
 const sound = document.getElementById("sound");
@@ -249,6 +265,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
