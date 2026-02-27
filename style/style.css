@@ -516,6 +516,7 @@ button {
           drop-shadow(0 0 30px rgba(255,105,180,0.6));
 
   offset-rotate: 0deg;
+  offset-anchor: 0 0;
 }
 
 @keyframes flyCurve {
@@ -556,6 +557,7 @@ button {
     opacity: 0;
   }
 }
+
 
 
 
