@@ -173,7 +173,10 @@ const flipForward = () => {
   if (!page.classList.contains('flipped')) {
 
     isFlipping = true;      // 🔒 khóa lại
-
+    setTimeout(() => {
+  isFlipping = false;
+}, 1200); // thời gian lật xuôi
+    
     // Nếu là trang gần cuối thì chạy typewriter
     if (page === pages[pages.length - 2] && !typed) {
       const endText = document.getElementById('ending-text');
@@ -209,7 +212,10 @@ const flipBackward = () => {
   if (page.classList.contains('flipped')) {
 
     isFlipping = true;      // 🔒 khóa lại
-
+    setTimeout(() => {
+  isFlipping = false;
+}, 500); // thời gian lật ngược
+    
     page.classList.add('fast');
     page.classList.remove('flipped');
 
@@ -221,11 +227,7 @@ const flipBackward = () => {
   front.addEventListener('click', flipForward);
   back.addEventListener('click', flipBackward);
 
-  page.addEventListener("transitionend", (e) => {
-  if (e.propertyName === "transform") {
-    isFlipping = false; // 🔓 mở khóa sau khi lật xong
-  }
-});
+
   
   page.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
@@ -247,6 +249,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
