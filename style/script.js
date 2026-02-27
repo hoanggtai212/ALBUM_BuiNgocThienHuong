@@ -151,6 +151,21 @@ endPage.appendChild(endBack);
 book.appendChild(endPage);
 pages.push(endPage);
 
+function createHeart(x, y) {
+  const heart = document.createElement("div");
+  heart.className = "heart-fly";
+  heart.innerText = "❤️";
+
+  heart.style.left = x + "px";
+  heart.style.top = y + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 1000);
+}
+
 function typewriterEffect(text, element) {
   let i = 0;
   let slowRemaining = 0; // số ký tự còn lại cần chạy chậm
@@ -287,7 +302,8 @@ document.querySelectorAll('.keypad button').forEach(btn => {
   btn.addEventListener('pointerdown', (e) => {
     e.preventDefault(); // 🔥 cực quan trọng cho Zalo/Mess
     btn.classList.add('pressed');
-
+    createHeart(e.clientX, e.clientY);
+    
     const num = btn.dataset.num;
 
     if (num !== undefined) {
@@ -316,6 +332,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
