@@ -456,7 +456,7 @@ button {
 
 .heart-fly {
   position: fixed;
-  font-size: 24px;
+  font-size: 18px;
   pointer-events: none;
   z-index: 30000;
   color: #ff4da6; /* 💗 hồng đậm hơn */
@@ -482,6 +482,7 @@ button {
     opacity: 0;
   }
 }
+
 
 
 
