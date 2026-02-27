@@ -159,14 +159,18 @@ function createHeart(x, y) {
   mainHeart.style.left = x + "px";
   mainHeart.style.top = y + "px";
 
+  // random cong trái hoặc phải
+  const curve = (Math.random() > 0.5 ? 1 : -1) * (80 + Math.random() * 60);
+  mainHeart.style.setProperty("--curveX", curve + "px");
+
   document.body.appendChild(mainHeart);
 
   mainHeart.addEventListener("animationend", () => {
 
     mainHeart.remove();
 
-    const explodeX = x;
-    const explodeY = y - 180; // đúng bằng độ cao bay
+    const explodeX = x + curve;
+    const explodeY = y - 200;
 
     for (let i = 0; i < 14; i++) {
 
@@ -360,6 +364,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
