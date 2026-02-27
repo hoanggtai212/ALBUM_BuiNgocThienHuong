@@ -1,3 +1,4 @@
+
 *{
   margin: 0;
   padding: 0;
@@ -474,17 +475,12 @@ button {
   }
 
   50% {
-    transform: translate(var(--x), -60px) scale(1.5);
+    transform: translate(calc(-15px + 30px * var(--rand)), -60px) scale(1.5);
   }
 
   100% {
-    transform: translate(calc(var(--x) * 1.5), -120px) scale(1.8);
+    transform: translate(calc(-30px + 60px * var(--rand)), -120px) scale(1.8);
     opacity: 0;
   }
 }
-
-
-
-
-
 
