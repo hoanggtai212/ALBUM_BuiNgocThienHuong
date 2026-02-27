@@ -201,9 +201,6 @@ function createHeart(x, y) {
   }
 }
 
-  }, { once: true });
-}
-
 function typewriterEffect(text, element) {
   let i = 0;
   let slowRemaining = 0; // số ký tự còn lại cần chạy chậm
@@ -373,6 +370,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
