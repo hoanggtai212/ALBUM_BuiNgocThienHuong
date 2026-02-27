@@ -22,11 +22,6 @@ function preventDoubleTapZoom(container) {
 const bookEl = document.getElementById("book");
 preventDoubleTapZoom(bookEl);
 
-// 🔐 Chặn zoom ở các lock screen
-document.querySelectorAll('#lock-screen-1, #lock-screen-2, #lock-screen-3')
-  .forEach(screen => preventDoubleTapZoom(screen));
-
-
 const book = document.getElementById('book');
 const pages = [];
 const sound = document.getElementById("sound");
@@ -302,6 +297,7 @@ document.querySelectorAll('.keypad button').forEach(btn => {
   });
 
 });
+
 
 
 
