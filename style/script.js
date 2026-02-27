@@ -156,14 +156,17 @@ function createHeart(x, y) {
   mainHeart.className = "heart-main";
   mainHeart.innerHTML = "💖";
 
-  // random cong trái hoặc phải
+  // Đặt tim đúng vị trí bấm
+  mainHeart.style.left = x + "px";
+  mainHeart.style.top = y + "px";
+
   const curve = (Math.random() > 0.5 ? 1 : -1) * (120 + Math.random() * 60);
 
-  // vẽ đường cong thật sự bằng quadratic curve
+  // Path bắt đầu từ 0 0 (relative)
   mainHeart.style.offsetPath = `
-    path("M ${x} ${y}
-          Q ${x + curve/2} ${y - 120}
-            ${x + curve} ${y - 200}")
+    path("M 0 0
+          Q ${curve/2} -120
+            ${curve} -200")
   `;
 
   document.body.appendChild(mainHeart);
@@ -176,7 +179,6 @@ function createHeart(x, y) {
     const explodeY = y - 200;
 
     for (let i = 0; i < 14; i++) {
-
       const particle = document.createElement("div");
       particle.className = "heart-particle";
       particle.innerHTML = "💗";
@@ -187,11 +189,8 @@ function createHeart(x, y) {
       const angle = Math.random() * Math.PI * 2;
       const distance = 80 + Math.random() * 60;
 
-      const moveX = Math.cos(angle) * distance;
-      const moveY = Math.sin(angle) * distance;
-
-      particle.style.setProperty("--x", moveX + "px");
-      particle.style.setProperty("--y", moveY + "px");
+      particle.style.setProperty("--x", Math.cos(angle) * distance + "px");
+      particle.style.setProperty("--y", Math.sin(angle) * distance + "px");
 
       document.body.appendChild(particle);
 
@@ -370,6 +369,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
