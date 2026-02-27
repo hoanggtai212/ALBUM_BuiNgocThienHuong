@@ -11,7 +11,7 @@ function preventDoubleTapZoom(container) {
     if (now - lastTouchEnd <= 300) {
       event.preventDefault();
     }
-
+    
     lastTouchEnd = now;
 
   }, { passive: false });
@@ -365,6 +365,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
