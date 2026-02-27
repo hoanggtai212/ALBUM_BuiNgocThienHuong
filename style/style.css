@@ -459,7 +459,6 @@ button {
   font-size: 24px;
   pointer-events: none;
   z-index: 30000;
-
   color: #ff4da6; /* 💗 hồng đậm hơn */
   text-shadow:
     0 0 8px rgba(255, 77, 166, 0.7),
@@ -478,4 +477,5 @@ button {
     opacity: 0;
   }
 }
+
 
