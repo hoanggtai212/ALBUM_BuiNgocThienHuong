@@ -154,7 +154,7 @@ pages.push(endPage);
 function createHeart(x, y) {
   const heart = document.createElement("div");
   heart.className = "heart-fly";
-  heart.innerText = "💖";
+  heart.innerText = "💗";
 
   heart.style.left = x + "px";
   heart.style.top = y + "px";
@@ -334,6 +334,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
