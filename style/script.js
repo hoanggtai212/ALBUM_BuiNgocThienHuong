@@ -170,7 +170,7 @@ function createHeart(x, y) {
   setTimeout(() => flash.remove(), 120);
 
   // 💥 NỔ TIM NGAY LẬP TỨC
-  const particleCount = 60;
+  const particleCount = 28;
 
   for (let i = 0; i < particleCount; i++) {
 
@@ -190,7 +190,7 @@ function createHeart(x, y) {
       - 2 * Math.cos(3 * t)
       - Math.cos(4 * t);
 
-    const scale = 4; // chỉnh độ to trái tim
+    const scale = 3; // chỉnh độ to trái tim
 
     particle.style.setProperty("--x", heartX * scale + "px");
     particle.style.setProperty("--y", -heartY * scale + "px");
@@ -370,6 +370,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
