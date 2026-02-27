@@ -156,12 +156,15 @@ function createHeart(x, y) {
   mainHeart.className = "heart-main";
   mainHeart.innerHTML = "💖";
 
-  mainHeart.style.left = x + "px";
-  mainHeart.style.top = y + "px";
-
   // random cong trái hoặc phải
-  const curve = (Math.random() > 0.5 ? 1 : -1) * (80 + Math.random() * 60);
-  mainHeart.style.setProperty("--curveX", curve + "px");
+  const curve = (Math.random() > 0.5 ? 1 : -1) * (120 + Math.random() * 60);
+
+  // vẽ đường cong thật sự bằng quadratic curve
+  mainHeart.style.offsetPath = `
+    path("M ${x} ${y}
+          Q ${x + curve/2} ${y - 120}
+            ${x + curve} ${y - 200}")
+  `;
 
   document.body.appendChild(mainHeart);
 
@@ -364,6 +367,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
