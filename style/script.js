@@ -266,11 +266,24 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
+// Hiệu ứng nhấn nút keypad
+document.querySelectorAll('.keypad button').forEach(btn => {
 
+  btn.addEventListener('touchstart', () => {
+    btn.classList.add('pressed');
+  });
 
+  btn.addEventListener('touchend', () => {
+    btn.classList.remove('pressed');
+  });
 
+  btn.addEventListener('mousedown', () => {
+    btn.classList.add('pressed');
+  });
 
+  btn.addEventListener('mouseup', () => {
+    btn.classList.remove('pressed');
+  });
 
-
-
+});
 
