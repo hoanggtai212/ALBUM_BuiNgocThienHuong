@@ -156,15 +156,14 @@ function createHeart(x, y) {
 
     const heart = document.createElement("div");
     heart.className = "heart-fly";
+    heart.innerHTML = "💗";   // 👈 THÊM DÒNG NÀY
 
     heart.style.left = x + "px";
     heart.style.top = y + "px";
 
-    // random lệch trái phải
     const randomX = (Math.random() - 0.5) * 60;
     heart.style.setProperty("--x", randomX + "px");
 
-    // cho mỗi tim trễ 1 chút nhìn mượt hơn
     heart.style.animationDelay = (i * 0.08) + "s";
 
     document.body.appendChild(heart);
@@ -341,4 +340,5 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
