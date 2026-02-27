@@ -534,17 +534,6 @@ button {
   pointer-events: none;
   z-index: 30000;
 
-  animation: explode 1s cubic-bezier(.17,.67,.83,.67) forwards;
-
-  filter: drop-shadow(0 0 8px rgba(255,105,180,0.8));
-}
-
-.heart-particle {
-  position: fixed;
-  font-size: 18px;
-  pointer-events: none;
-  z-index: 30000;
-
   transform: translate(-50%, -50%);
   animation: heartExplode 1.2s ease-out forwards;
 
@@ -565,21 +554,4 @@ button {
     opacity: 0;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
