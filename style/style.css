@@ -437,15 +437,6 @@ input {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+button {
+  touch-action: manipulation;
+}
