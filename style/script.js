@@ -156,13 +156,18 @@ function createHeart(x, y) {
 
     const heart = document.createElement("div");
     heart.className = "heart-fly";
-    heart.innerHTML = "💗";   // 👈 THÊM DÒNG NÀY
+    heart.innerHTML = "💗";
 
     heart.style.left = x + "px";
     heart.style.top = y + "px";
 
-    const randomX = (Math.random() - 0.5) * 60;
+    // random lệch ngang
+    const randomX = (Math.random() - 0.5) * 80;
     heart.style.setProperty("--x", randomX + "px");
+
+    // random xoay
+    const randomRotate = (Math.random() - 0.5) * 60;
+    heart.style.setProperty("--rotate", randomRotate + "deg");
 
     heart.style.animationDelay = (i * 0.08) + "s";
 
@@ -170,7 +175,7 @@ function createHeart(x, y) {
 
     setTimeout(() => {
       heart.remove();
-    }, 1200);
+    }, 1500);
   }
 }
 
@@ -340,5 +345,6 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
