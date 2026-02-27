@@ -2,18 +2,26 @@
 // 🔒 Chặn double tap zoom (mobile)
 let lastTouchEnd = 0;
 
-document.addEventListener('touchend', function (event) {
+function preventDoubleTapZoom(container) {
+  container.addEventListener('touchend', function (event) {
 
-  // ❗ Nếu đang bấm vào keypad thì không chặn
-  if (event.target.closest('.keypad')) return;
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
 
-  const now = new Date().getTime();
-  if (now - lastTouchEnd <= 300) {
-    event.preventDefault();
-  }
-  lastTouchEnd = now;
+    lastTouchEnd = now;
 
-}, { passive: false });
+  }, { passive: false });
+}
+
+// 📖 Chặn zoom ở book
+const bookEl = document.getElementById("book");
+preventDoubleTapZoom(bookEl);
+
+// 🔐 Chặn zoom ở các lock screen
+document.querySelectorAll('#lock-screen-1, #lock-screen-2, #lock-screen-3')
+  .forEach(screen => preventDoubleTapZoom(screen));
 
 // 👇 DÁN NGAY Ở ĐÂY
 document.addEventListener('gesturestart', function (e) {
@@ -291,5 +299,6 @@ document.querySelectorAll('.keypad button').forEach(btn => {
   });
 
 });
+
 
 
