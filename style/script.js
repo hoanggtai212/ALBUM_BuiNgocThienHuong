@@ -1,4 +1,3 @@
-
 // 🔒 Chặn double tap zoom (mobile)
 let lastTouchEnd = 0;
 
@@ -342,6 +341,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
