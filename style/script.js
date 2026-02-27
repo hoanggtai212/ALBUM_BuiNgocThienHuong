@@ -159,6 +159,8 @@ function createHeart(x, y) {
   heart.style.left = x + "px";
   heart.style.top = y + "px";
 
+  heart.style.setProperty("--rand", Math.random());
+
   document.body.appendChild(heart);
 
   setTimeout(() => {
@@ -332,6 +334,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
