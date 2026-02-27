@@ -152,25 +152,22 @@ pages.push(endPage);
 
 function createHeart(x, y) {
 
-  // 💖 Tim chính bay lên trước
   const mainHeart = document.createElement("div");
   mainHeart.className = "heart-main";
   mainHeart.innerHTML = "💖";
+
   mainHeart.style.left = x + "px";
   mainHeart.style.top = y + "px";
 
   document.body.appendChild(mainHeart);
 
-  // Sau khi bay lên 1 chút thì nổ
-  setTimeout(() => {
-
-    const rect = mainHeart.getBoundingClientRect();
-    const explodeX = rect.left + rect.width / 2;
-    const explodeY = rect.top + rect.height / 2;
+  mainHeart.addEventListener("animationend", () => {
 
     mainHeart.remove();
 
-    // 💥 Tạo tim nhỏ nổ ra
+    const explodeX = x;
+    const explodeY = y - 180; // đúng bằng độ cao bay
+
     for (let i = 0; i < 14; i++) {
 
       const particle = document.createElement("div");
@@ -181,7 +178,7 @@ function createHeart(x, y) {
       particle.style.top = explodeY + "px";
 
       const angle = Math.random() * Math.PI * 2;
-      const distance = 50 + Math.random() * 70;
+      const distance = 80 + Math.random() * 60;
 
       const moveX = Math.cos(angle) * distance;
       const moveY = Math.sin(angle) * distance;
@@ -191,12 +188,10 @@ function createHeart(x, y) {
 
       document.body.appendChild(particle);
 
-      setTimeout(() => {
-        particle.remove();
-      }, 900);
+      setTimeout(() => particle.remove(), 1000);
     }
 
-  }, 700); // 💡 thời gian tim bay lên trước khi nổ
+  }, { once: true });
 }
 
 function typewriterEffect(text, element) {
@@ -365,6 +360,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
