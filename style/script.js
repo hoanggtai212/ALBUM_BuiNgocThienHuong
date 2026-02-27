@@ -156,22 +156,26 @@ function createHeart(x, y) {
   mainHeart.className = "heart-main";
   mainHeart.innerHTML = "💖";
 
-  mainHeart.style.left = x + "px";
-  mainHeart.style.top = y + "px";
-
   // random cong trái hoặc phải
-  const curve = (Math.random() > 0.5 ? 1 : -1) * (60 + Math.random() * 40);
+  const curve = (Math.random() > 0.5 ? 1 : -1) * (80 + Math.random() * 40);
 
-  mainHeart.style.setProperty("--x", curve + "px");
+  // Tạo đường cong Bezier
+  const path = `
+    M ${x} ${y}
+    Q ${x + curve} ${y - 120}
+      ${x + curve * 0.6} ${y - 220}
+  `;
+
+  mainHeart.style.setProperty("--path", `"${path}"`);
 
   document.body.appendChild(mainHeart);
 
   mainHeart.addEventListener("animationend", () => {
 
-    mainHeart.remove();
-
-    const explodeX = x + curve;
+    const explodeX = x + curve * 0.6;
     const explodeY = y - 220;
+
+    mainHeart.remove();
 
     for (let i = 0; i < 14; i++) {
 
@@ -183,7 +187,7 @@ function createHeart(x, y) {
       particle.style.top = explodeY + "px";
 
       const angle = Math.random() * Math.PI * 2;
-      const distance = 80 + Math.random() * 60;
+      const distance = 70 + Math.random() * 60;
 
       particle.style.setProperty("--x", Math.cos(angle) * distance + "px");
       particle.style.setProperty("--y", Math.sin(angle) * distance + "px");
@@ -365,6 +369,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
