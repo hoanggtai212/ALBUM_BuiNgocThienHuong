@@ -452,33 +452,46 @@ button {
   touch-action: manipulation;
 }
 
-/* ===== HEART FLY EFFECT ===== */
+/* ===== HEART FLY EFFECT UPGRADE ===== */
 
 .heart-fly {
   position: fixed;
-  font-size: 18px;
+  font-size: 20px;
   pointer-events: none;
   z-index: 30000;
-  color: #ff4da6; /* 💗 hồng đậm hơn */
-  text-shadow:
-    0 0 8px rgba(255, 77, 166, 0.7),
-    0 0 16px rgba(255, 77, 166, 0.5);
 
-  animation: heartFly 1s ease-out forwards;
+  filter: drop-shadow(0 0 6px rgba(255, 105, 180, 0.8))
+          drop-shadow(0 0 14px rgba(255, 105, 180, 0.6));
+
+  animation: heartFly 1.4s cubic-bezier(.22,.68,.32,1) forwards;
 }
 
 @keyframes heartFly {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(0.8) rotate(0deg);
     opacity: 1;
   }
 
-  50% {
-    transform: translate(var(--x), -60px) scale(1.5);
+  40% {
+    transform: 
+      translate(calc(var(--x) * 0.5), -50px)
+      scale(1.3)
+      rotate(calc(var(--rotate) * 0.5));
+  }
+
+  70% {
+    transform: 
+      translate(var(--x), -90px)
+      scale(1.6)
+      rotate(var(--rotate));
   }
 
   100% {
-    transform: translate(var(--x), -120px) scale(1.8);
+    transform: 
+      translate(calc(var(--x) * 1.2), -140px)
+      scale(1.8)
+      rotate(calc(var(--rotate) * 1.5));
     opacity: 0;
   }
 }
+
