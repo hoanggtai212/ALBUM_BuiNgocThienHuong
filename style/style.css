@@ -456,9 +456,15 @@ button {
 
 .heart-fly {
   position: fixed;
-  font-size: 22px;
+  font-size: 24px;
   pointer-events: none;
   z-index: 30000;
+
+  color: #ff4da6; /* 💗 hồng đậm hơn */
+  text-shadow:
+    0 0 8px rgba(255, 77, 166, 0.7),
+    0 0 16px rgba(255, 77, 166, 0.5);
+
   animation: heartFly 1s ease-out forwards;
 }
 
@@ -468,11 +474,8 @@ button {
     opacity: 1;
   }
   100% {
-    transform: translateY(-100px) scale(1.8);
+    transform: translateY(-110px) scale(1.9);
     opacity: 0;
   }
 }
-
-
-
 
