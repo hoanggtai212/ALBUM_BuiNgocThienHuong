@@ -3,11 +3,16 @@
 let lastTouchEnd = 0;
 
 document.addEventListener('touchend', function (event) {
+
+  // ❗ Nếu đang bấm vào keypad thì không chặn
+  if (event.target.closest('.keypad')) return;
+
   const now = new Date().getTime();
   if (now - lastTouchEnd <= 300) {
     event.preventDefault();
   }
   lastTouchEnd = now;
+
 }, { passive: false });
 
 // 👇 DÁN NGAY Ở ĐÂY
@@ -286,4 +291,5 @@ document.querySelectorAll('.keypad button').forEach(btn => {
   });
 
 });
+
 
