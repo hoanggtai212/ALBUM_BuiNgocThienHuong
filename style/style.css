@@ -495,3 +495,52 @@ button {
   }
 }
 
+/* ===== TIM CHÍNH BAY LÊN ===== */
+
+.heart-main {
+  position: fixed;
+  font-size: 26px;
+  pointer-events: none;
+  z-index: 30000;
+
+  animation: mainFly 0.7s ease-out forwards;
+
+  filter: drop-shadow(0 0 8px rgba(255,105,180,0.8))
+          drop-shadow(0 0 18px rgba(255,105,180,0.6));
+}
+
+@keyframes mainFly {
+  0% {
+    transform: translate(0,0) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0,-100px) scale(1.4);
+    opacity: 1;
+  }
+}
+
+/* ===== TIM NHỎ NỔ RA ===== */
+
+.heart-particle {
+  position: fixed;
+  font-size: 16px;
+  pointer-events: none;
+  z-index: 30000;
+
+  animation: explode 0.9s ease-out forwards;
+
+  filter: drop-shadow(0 0 6px rgba(255,105,180,0.7));
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0,0) scale(0.6);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1.3);
+    opacity: 0;
+  }
+}
