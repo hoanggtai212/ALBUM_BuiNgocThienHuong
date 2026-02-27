@@ -33,7 +33,7 @@ function checkPass() {
     const front = bigLock.querySelector(".front");
     const back = bigLock.querySelector(".back");
 
-    overlay.style.display = "flex";
+    overlay.classList.add("show");
 
     // reset trạng thái
     bigLock.classList.remove("spin", "open");
@@ -59,8 +59,11 @@ function checkPass() {
     // ===== 4️⃣ Ẩn overlay & chuyển màn =====
     setTimeout(() => {
 
-      overlay.style.display = "none";
-      bigLock.classList.remove("spin", "open");
+      overlay.classList.remove("show");
+
+setTimeout(() => {
+  bigLock.classList.remove("spin", "open");
+}, 400);
 
       currentScreen.style.display = "none";
 
