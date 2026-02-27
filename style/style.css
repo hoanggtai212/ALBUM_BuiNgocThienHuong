@@ -496,7 +496,7 @@ button {
 }
 
 /* ===== TIM BAY NHƯ PHÁO HOA ===== */
-
+/*
 .heart-main {
   position: fixed;
   font-size: 20px;
@@ -524,7 +524,7 @@ button {
     opacity: 0;
   }
 }
-
+*/
 
 /* ===== TIM NỔ ===== */
 
@@ -565,6 +565,7 @@ button {
     opacity: 0;
   }
 }
+
 
 
 
