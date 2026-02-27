@@ -152,31 +152,51 @@ pages.push(endPage);
 
 function createHeart(x, y) {
 
-  for (let i = 0; i < 3; i++) {
+  // 💖 Tim chính bay lên trước
+  const mainHeart = document.createElement("div");
+  mainHeart.className = "heart-main";
+  mainHeart.innerHTML = "💖";
+  mainHeart.style.left = x + "px";
+  mainHeart.style.top = y + "px";
 
-    const heart = document.createElement("div");
-    heart.className = "heart-fly";
-    heart.innerHTML = "💗";
+  document.body.appendChild(mainHeart);
 
-    heart.style.left = x + "px";
-    heart.style.top = y + "px";
+  // Sau khi bay lên 1 chút thì nổ
+  setTimeout(() => {
 
-    // random lệch ngang
-    const randomX = (Math.random() - 0.5) * 80;
-    heart.style.setProperty("--x", randomX + "px");
+    const rect = mainHeart.getBoundingClientRect();
+    const explodeX = rect.left + rect.width / 2;
+    const explodeY = rect.top + rect.height / 2;
 
-    // random xoay
-    const randomRotate = (Math.random() - 0.5) * 60;
-    heart.style.setProperty("--rotate", randomRotate + "deg");
+    mainHeart.remove();
 
-    heart.style.animationDelay = (i * 0.08) + "s";
+    // 💥 Tạo tim nhỏ nổ ra
+    for (let i = 0; i < 14; i++) {
 
-    document.body.appendChild(heart);
+      const particle = document.createElement("div");
+      particle.className = "heart-particle";
+      particle.innerHTML = "💗";
 
-    setTimeout(() => {
-      heart.remove();
-    }, 1500);
-  }
+      particle.style.left = explodeX + "px";
+      particle.style.top = explodeY + "px";
+
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 50 + Math.random() * 70;
+
+      const moveX = Math.cos(angle) * distance;
+      const moveY = Math.sin(angle) * distance;
+
+      particle.style.setProperty("--x", moveX + "px");
+      particle.style.setProperty("--y", moveY + "px");
+
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 900);
+    }
+
+  }, 700); // 💡 thời gian tim bay lên trước khi nổ
 }
 
 function typewriterEffect(text, element) {
@@ -345,6 +365,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
