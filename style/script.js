@@ -168,7 +168,11 @@ pages.forEach((page) => {
   const back = page.querySelector('.back');
 
 const flipForward = () => {
+  if (isFlipping) return;   // 🚫 chặn spam
+
   if (!page.classList.contains('flipped')) {
+
+    isFlipping = true;      // 🔒 khóa lại
 
     // Nếu là trang gần cuối thì chạy typewriter
     if (page === pages[pages.length - 2] && !typed) {
@@ -191,8 +195,8 @@ const flipForward = () => {
       typed = true;
     }
 
-    page.classList.remove('fast');   // tốc độ chậm
-    page.classList.add('flipped');   // LẬT NGAY
+    page.classList.remove('fast');
+    page.classList.add('flipped');
 
     currentTopZ++;
     page.style.zIndex = currentTopZ;
@@ -200,10 +204,14 @@ const flipForward = () => {
 };
 
 const flipBackward = () => {
+  if (isFlipping) return;   // 🚫 chặn spam
+
   if (page.classList.contains('flipped')) {
 
-    page.classList.add('fast');      // dùng tốc độ nhanh
-    page.classList.remove('flipped'); // lật ngay
+    isFlipping = true;      // 🔒 khóa lại
+
+    page.classList.add('fast');
+    page.classList.remove('flipped');
 
     currentTopZ++;
     page.style.zIndex = currentTopZ;
@@ -213,6 +221,12 @@ const flipBackward = () => {
   front.addEventListener('click', flipForward);
   back.addEventListener('click', flipBackward);
 
+  page.addEventListener("transitionend", (e) => {
+  if (e.propertyName === "transform") {
+    isFlipping = false; // 🔓 mở khóa sau khi lật xong
+  }
+});
+  
   page.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
   });
@@ -233,6 +247,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
