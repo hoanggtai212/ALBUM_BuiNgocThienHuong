@@ -37,7 +37,6 @@ function checkPass() {
 
     // reset trạng thái
     bigLock.classList.remove("spin", "open");
-    void bigLock.offsetWidth;
 
     // đảm bảo bắt đầu là 🔒
     if (front) front.textContent = "🔒";
@@ -90,3 +89,18 @@ function checkPass() {
     getInput().value = "";
   }
 }
+
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("unlock-overlay");
+  const bigLock = overlay.querySelector(".big-lock");
+
+  overlay.style.display = "flex";
+
+  // ép render trước animation
+  bigLock.classList.add("spin");
+  bigLock.offsetHeight;
+  bigLock.classList.remove("spin");
+
+  overlay.style.display = "none";
+});
+
