@@ -328,12 +328,12 @@ back.addEventListener('click', flipBackward);
     startX = e.touches[0].clientX;
   });
 
-  page.addEventListener('touchend', (e) => {
-    const diff = e.changedTouches[0].clientX - startX;
-    if (diff < -30) flipForward();
-    if (diff > 30) flipBackward();
-}
-  });
+page.addEventListener('touchend', (e) => {
+  const diff = e.changedTouches[0].clientX - startX;
+
+  if (diff < -30) flipForward();
+  if (diff > 30) flipBackward();
+});
 
 });
 
@@ -385,6 +385,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
