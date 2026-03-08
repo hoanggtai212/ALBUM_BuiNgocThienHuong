@@ -240,6 +240,7 @@ function typewriterEffect(text, element) {
 let currentTopZ = 200;
 let typed = false;
 const flippingPages = new WeakSet();
+let currentPage = 0;
 
 pages.forEach((page) => {
   let startX = 0;
@@ -252,19 +253,16 @@ let isFlippingBackward = false;
   
 const flipForward = () => {
 
-  if (isFlippingBackward) return; // đang lật ngược thì không cho lật xuôi
+  if (page !== pages[currentPage]) return;
 
   if (flippingPages.has(page)) return;
 
   if (!page.classList.contains('flipped')) {
 
-    isFlippingForward = true;
-
     flippingPages.add(page);
 
     setTimeout(() => {
       flippingPages.delete(page);
-      isFlippingForward = false;
     }, 1200);
 
     if (page === pages[pages.length - 2] && !typed) {
@@ -293,24 +291,23 @@ const flipForward = () => {
 
     currentTopZ++;
     page.style.zIndex = currentTopZ;
+
+    currentPage++;
   }
 };
 
 const flipBackward = () => {
 
-  if (isFlippingForward) return; // đang lật xuôi thì không cho lật ngược
+  if (page !== pages[currentPage - 1]) return;
 
   if (flippingPages.has(page)) return;
 
   if (page.classList.contains('flipped')) {
 
-    isFlippingBackward = true;
-
     flippingPages.add(page);
 
     setTimeout(() => {
       flippingPages.delete(page);
-      isFlippingBackward = false;
     }, 500);
 
     page.classList.add('fast');
@@ -318,20 +315,14 @@ const flipBackward = () => {
 
     currentTopZ++;
     page.style.zIndex = currentTopZ;
+
+    currentPage--;
   }
 };
 
-front.addEventListener('click', () => {
-  if (!page.classList.contains('flipped')) {
-    flipForward();
-  }
-});
+front.addEventListener('click', flipForward);
 
-back.addEventListener('click', () => {
-  if (page.classList.contains('flipped')) {
-    flipBackward();
-  }
-});
+back.addEventListener('click', flipBackward);
   
   page.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
@@ -339,11 +330,8 @@ back.addEventListener('click', () => {
 
   page.addEventListener('touchend', (e) => {
     const diff = e.changedTouches[0].clientX - startX;
-    if (diff < -30 && !page.classList.contains('flipped')) {
-  flipForward();
-}
-else if (diff > 30 && page.classList.contains('flipped')) {
-  flipBackward();
+    if (diff < -30) flipForward();
+    if (diff > 30) flipBackward();
 }
   });
 
@@ -397,6 +385,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
